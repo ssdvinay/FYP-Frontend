@@ -3,6 +3,7 @@ import {User} from "../../user";
 import {UserHelper} from "../../user-helper";
 import {RESTAPIService} from "../../apiservice.service";
 import {HttpErrorResponse} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-customer',
@@ -11,7 +12,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 })
 export class CustomerComponent {
 
-  constructor(private apiService: RESTAPIService) {
+  constructor(private apiService: RESTAPIService, private router: Router) {
   }
 
   signup() {
@@ -21,8 +22,11 @@ export class CustomerComponent {
       return
     }
     this.apiService.signup(user).subscribe({
-      next: value => alert('Successfully signed up'),
-      error: (err: HttpErrorResponse) => alert('Unable to signup' + err.error.body)
+      next: value => {
+        alert('Successfully signed up');
+        this.router.navigate([''])
+      },
+      error: (err: HttpErrorResponse) => alert('Unable to signup: ' + err.error.error)
     })
   }
 }

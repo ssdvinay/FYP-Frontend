@@ -3,6 +3,7 @@ import {UserHelper} from "../../user-helper";
 import {RESTAPIService} from "../../apiservice.service";
 import {User} from "../../user";
 import {HttpErrorResponse} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-dealer',
@@ -11,7 +12,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 })
 export class DealerComponent {
 
-  constructor(private apiService: RESTAPIService) {
+  constructor(private apiService: RESTAPIService, private router: Router) {
   }
 
   signup() {
@@ -41,7 +42,10 @@ export class DealerComponent {
     user.price = (document.getElementById('price') as HTMLInputElement).valueAsNumber
 
     this.apiService.signup(user).subscribe({
-      next: value => alert('Successfully signed up'),
+      next: value => {
+        alert('Successfully signed up');
+        this.router.navigate([''])
+      },
       error: (err: HttpErrorResponse) => alert('Unable to signup: ' + err.error.error)
     })
   }

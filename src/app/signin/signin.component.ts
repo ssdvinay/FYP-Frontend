@@ -21,6 +21,7 @@ export class SigninComponent {
     this.apiService.login(emailOrUsername, password).subscribe({
       next: (value: HttpResponse<Response<String>>) => {
         alert('Login successful')
+        this.router.navigate([''])
       },
       error: err => alert('Unable to login'),
     })

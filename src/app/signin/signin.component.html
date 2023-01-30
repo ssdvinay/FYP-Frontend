@@ -1,0 +1,23 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<body>
+<div>
+  <a routerLink="">
+    <img class="m_logo" src="/assets/Logo.png" alt="image">
+  </a>
+</div>
+<h1>Car protection</h1>
+<form>
+  <div class="form-group">
+    <label for="login">Email or Username</label>
+    <input type="text" class="form-control" id="login" aria-describedby="emailHelp"
+           placeholder="Enter email or username">
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" placeholder="Password">
+  </div>
+  <button type="button" class="submit btn btn-primary" (click)="login()">Log in</button>
+</form>
+</body>

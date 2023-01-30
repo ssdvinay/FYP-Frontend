@@ -1,0 +1,84 @@
+* {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  background: linear-gradient(180deg,
+  rgba(150, 238, 243, 0.78) 0%,
+  rgba(150, 238, 243, 0.78) 0.01%,
+  rgba(224, 247, 250, 0.429) 100%) center;
+  background-size: cover;
+  margin: 0;
+  height: 100vh;
+  width: 100%;
+}
+
+.m_center {
+  width: 40%;
+  height: 60vh;
+  border: 2px;
+  margin-left: 30%;
+  margin-top: 5vh;
+}
+
+input {
+  height: 35px;
+  width: 50%;
+  border-radius: 5px;
+  border-color: whitesmoke;
+}
+
+.m_logo {
+  height: 200px;
+  width: 250px;
+  margin-left: 42%;
+}
+
+h1 {
+  text-align: center;
+  font-weight: 900;
+}
+
+.m_name {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.m_password {
+  text-align: center;
+  margin-top: 5px;
+}
+
+.m_signin {
+  text-align: center;
+  margin-top: 20px;
+  display: table-column-group;
+}
+
+.m_forgetpassword {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.m_forgetpassword:hover {
+
+}
+
+.submit {
+  text-align: center;
+  margin-left: 15%;
+  margin-top: 20px;
+  width: 20%;
+}
+
+form {
+  margin-left: 30%;
+  padding: 10px;
+}
+
+.form-group {
+  padding: 10px;
+}

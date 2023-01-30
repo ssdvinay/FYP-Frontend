@@ -1,0 +1,21 @@
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+<app-header></app-header>
+<div class="container1" *ngFor="let item of approval">
+  <p class="p1"><span> Username: </span>{{item.user?.username}}
+    <br>
+    <span>Showroom Name & Address: </span> {{item.showRoomAddress}}
+    <br>
+    <span>Email: </span>{{item.user?.email}} <br>
+    <span>Phone no: </span>{{item?.user?.phoneNumber}}</p>
+  <a class="accept" (click)="updateDealerStatus(item.id, 'APPROVED')">Accept</a>
+  <a class="reject" (click)="updateDealerStatus(item.id, 'REJECTED')">Reject</a>
+</div>
+<app-footer></app-footer>
+</body>

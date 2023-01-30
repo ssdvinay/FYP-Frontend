@@ -1,0 +1,55 @@
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dealers</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<app-header></app-header>
+<div class="user">
+  <table width="100%">
+    <thead>
+    <tr>
+      <td><h4>Username</h4></td>
+      <td><h4>Email Address</h4></td>
+      <td><h4>Phone number</h4></td>
+      <td><h4>Status</h4></td>
+      <td><h4>Action</h4></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of dealers">
+      <td class="people">
+        <p>{{item.user.username}}</p>
+      </td>
+      <td class="people">
+        <p>{{item.user.email}}</p>
+      </td>
+      <td class="people">
+        <p>{{item.user.phoneNumber}}</p>
+      </td>
+      <td class="people">
+        <span *ngIf="item.user.blacklisted; else notBlocked">Blocked</span>
+        <ng-template #notBlocked>Active</ng-template>
+      </td>
+      <td>
+       <span *ngIf="item?.user?.blacklisted; else elsebtn">
+         <button style="min-width: 100px" class="btn btn-success"
+                 (click)="setBlacklisted(item.id, false)">Unblock</button>
+       </span>
+        <ng-template #elsebtn>
+          <button style="min-width: 100px" class="btn btn-danger"
+                  (click)="setBlacklisted(item.id, true)">Block
+          </button>
+        </ng-template>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+<app-footer></app-footer>
+</body>

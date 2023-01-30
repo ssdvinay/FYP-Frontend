@@ -1,0 +1,25 @@
+<head>
+  <title>Document</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <script>
+    let search = document.querySelector('.search-box');
+    document.querySelector('#search-icon').onclick = () => {
+      search.classList.toggle('active');
+    }
+    window.onscroll = () => {
+      search.classList.remove('active');
+    }
+  </script>
+</head>
+<body>
+<app-header></app-header>
+<section class="home" id="home">
+  <div class="home-text">
+    <p>The global paint protection film was valued at <br>$296.3 million as of 2021. It is a highly popular <br> that
+      helps vehicle owners protect their cars to keep<br> them looking new for years.
+    </p>
+  </div>
+  <img class="image" src="assets/Logo.png" alt="">
+</section>
+<app-footer></app-footer>
+</body>

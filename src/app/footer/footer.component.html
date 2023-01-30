@@ -1,0 +1,41 @@
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<script>
+  let search = document.querySelector('.search-box');
+  document.querySelector('#search-icon').onclick = () => {
+    search.classList.toggle('active');
+  }
+  window.onscroll = () => {
+    search.classList.remove('active');
+  }
+</script>
+<section class="footer">
+  <div class="footer-container container">
+    <div class="footer-box">
+      <a href="#" class="logo">Car<span>Protection</span></a>
+      <div class="social">
+        <a href="#"><i class='bx bxl-facebook'></i></a>
+        <a href="#"><i class='bx bxl-instagram'></i></a>
+        <a href="#"><i class='bx bxl-youtube'></i></a>
+        <a href="#"><i class='bx bxl-twitter'></i></a>
+      </div>
+    </div>
+    <div class="footer-box">
+      <h3>Page</h3>
+      <a href="#">Home</a>
+      <a href="#">Approval</a>
+      <a href="#">Blacklist</a>
+    </div>
+    <div class="footer-box">
+      <h3>Legal</h3>
+      <a href="#">Privacy</a>
+      <a href="#">Refund policy</a>
+      <a href="#">cookie policy</a>
+    </div>
+    <div class="footer-box">
+      <h3>Contact</h3>
+      <p>Pakistan</p>
+      <p>United states</p>
+      <p>Australia</p>
+    </div>
+  </div>
+</section>

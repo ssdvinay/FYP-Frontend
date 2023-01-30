@@ -1,0 +1,24 @@
+.gradient-custom {
+  background: linear-gradient(180deg,
+  rgba(150, 238, 243, 0.78) 0%,
+  rgba(150, 238, 243, 0.78) 0.01%,
+  rgba(224, 247, 250, 0.429) 100%) center;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+}
+
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+  font-size: 1rem;
+  line-height: 2.15;
+  padding-left: .75em;
+  padding-right: .75em;
+}
+
+.card-registration .select-arrow {
+  top: 13px;
+}
+
+.form-control {
+  font-size: 16px;
+}

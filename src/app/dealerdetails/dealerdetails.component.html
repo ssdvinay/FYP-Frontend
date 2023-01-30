@@ -1,0 +1,131 @@
+<body class="vh-100 gradient-custom">
+<app-header></app-header>
+<section>
+  <div class="container py-5 h-100" style="margin-top: -20px">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="col-12 col-lg-9 col-xl-7">
+        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+          <div class="card-body p-4 p-md-5" style="height: 75vh">
+            <div style="margin-top: -16px">
+              <a routerLink="">
+                <img src="/assets/Logo.png" style="float: left; margin-left: 15%" width="72" height="44" alt="image">
+              </a>
+              <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">View Dealer Details</h3>
+            </div>
+            <form [ngModel]="dealer" [ngModelOptions]="{standalone: true}">
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <input type="text" id="firstName" class="form-control form-control-lg" placeholder="First Name"
+                           [value]="dealer.user.firstName" disabled/>
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <input type="text" id="lastName" class="form-control form-control-lg" placeholder="Last Name"
+                           [value]="dealer.user.lastName" disabled/>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <input type="email" id="emailAddress" class="form-control form-control-lg" placeholder="Email"
+                           [value]="dealer.user.email" disabled/>
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4 pb-2">
+                  <div class="form-outline">
+                    <input type="text" id="username" class="form-control form-control-lg" placeholder="Username"
+                           [value]="dealer.user.username" disabled/>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <input type="tel" id="phoneNumber" class="form-control form-control-lg" placeholder="Phone Number"
+                           [value]="dealer.user.phoneNumber" disabled/>
+                  </div>
+
+                </div>
+
+                <div class="col-md-6 mb-4 pb-2">
+                  <div class="form-outline">
+                    <input type="address" id="address" class="form-control form-control-lg"
+                           placeholder="Address" [value]="dealer.showRoomAddress" disabled/>
+                  </div>
+                </div>
+              </div>
+              <h6 style="margin-top: -3%">Supported Car Types</h6>
+              <div style="display:flex; flex-direction: row; justify-content: start; align-items: flex-start">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="sedan" disabled [checked]="includesCar(2)">
+                  <label class="form-check-label" for="sedan">
+                    Sedan
+                  </label>
+                </div>
+                <p>&nbsp; &nbsp; &nbsp;</p>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="suv" disabled [checked]="includesCar(3)">
+                  <label class="form-check-label" for="suv">
+                    SUV
+                  </label>
+                </div>
+                <p>&nbsp; &nbsp; &nbsp;</p>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="hatchback" disabled [checked]="includesCar(1)">
+                  <label class="form-check-label" for="suv">
+                    Hatchback
+                  </label>
+                </div>
+              </div>
+
+              <h6>Supported Product Types</h6>
+              <div style="display:flex; flex-direction: row; justify-content: start; align-items: flex-start">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="tng" disabled [checked]="includesProduct(1)">
+                  <label class="form-check-label" for="tng">
+                    Transparent and Glossy
+                  </label>
+                </div>
+                <p>&nbsp; &nbsp; &nbsp;</p>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="matte" disabled [checked]="includesProduct(2)">
+                  <label class="form-check-label" for="matte">
+                    Matte PPFS
+                  </label>
+                </div>
+                <p>&nbsp; &nbsp; &nbsp;</p>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="ut" disabled [checked]="includesProduct(3)">
+                  <label class="form-check-label" for="ut">
+                    Ultra Thick PPFS
+                  </label>
+                </div>
+              </div>
+              <div class="form-check" style="display: flex; flex-direction: row; margin-left: -7%">
+                <label class="form-control-lg">Rs. </label>
+                <input type="number" id="price" class="form-control" value="{{dealer.dealerCarProductList[0].price}}"
+                       placeholder="0" style="width: 150px" disabled/>
+              </div>
+              <div class="mt-4 pt-2">
+                <input class="btn btn-primary btn-lg" style="margin-left: 35%; width: 30%; margin-top: -10px"
+                       type="button" value="Update" hidden/>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>
+</body>

@@ -7,15 +7,22 @@
 </head>
 <body>
 <app-header></app-header>
-<div class="container1" *ngFor="let item of approval">
-  <p class="p1"><span> Username: </span>{{item.user?.username}}
-    <br>
-    <span>Showroom Name & Address: </span> {{item.showRoomAddress}}
-    <br>
-    <span>Email: </span>{{item.user?.email}} <br>
-    <span>Phone no: </span>{{item?.user?.phoneNumber}}</p>
-  <a class="accept" (click)="updateDealerStatus(item.id, 'APPROVED')">Accept</a>
-  <a class="reject" (click)="updateDealerStatus(item.id, 'REJECTED')">Reject</a>
+<div style="max-height: 70%; max-width: 98%; overflow-y: auto" class="col-md-12">
+  <div class="container1 row" style="margin-right: -10px" *ngFor="let item of approval">
+    <div class="col-md-10 col-sm-10" style="margin-top: 10px">
+    <p class="p1">
+<!--      <span> Username: </span>{{item.user?.username}}<br>-->
+      <span> First Name: </span>{{item.user?.firstName}}<br>
+      <span> Last Name: </span>{{item.user?.lastName}}<br>
+      <span>Showroom Name & Address: </span> {{item.showRoomAddress}}<br>
+      <span>Email: </span>{{item.user?.email}} <br>
+      <span>Phone no: </span>{{item?.user?.phoneNumber}}</p>
+    </div>
+    <div class="col-md-2 col-sm-2" style="margin-top: 9%;">
+    <a class="accept" (click)="updateDealerStatus(item.id, 'APPROVED')">Accept</a>
+    <a class="reject" (click)="updateDealerStatus(item.id, 'REJECTED')">Reject</a>
+    </div>
+  </div>
 </div>
-<app-footer></app-footer>
 </body>
+<app-footer></app-footer>

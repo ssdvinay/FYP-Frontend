@@ -8,12 +8,11 @@ body{
 }
 
 .container1{
-  height: 28%;
-  width: 80%;
+  height: 0%;
   border: 1px solid black;
   margin-left: 5%;
   background-color: white;
-  border-radius: 20px;
+  border-radius: 10px;
   margin-bottom: 12px;
 }
 
@@ -33,9 +32,8 @@ a{
 .accept {
   color: #FFF;
   background: #44CC44;
-  padding: 15px 20px;
+  padding: 10px 17px;
   box-shadow: 0 4px 0 0 #2EA62E;
-  margin-left: 80%;
   border-radius: 10px;
 
 }
@@ -46,8 +44,8 @@ a{
 }
 .reject {
   color: #FFF;
-  background:red;
-  padding: 15px 20px;
+  background: rgba(238, 39, 39, 0.86);
+  padding: 10px 17px;
   box-shadow: 0 4px 0 0 rgb(172, 78, 78);
   margin-left: 2%;
   border-radius: 10px;

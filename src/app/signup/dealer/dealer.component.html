@@ -126,12 +126,13 @@
               </div>
               <div class="form-check" style="display: flex; flex-direction: row; margin-left: -7%">
                 <label class="form-control-lg">Rs. </label>
-                <input type="number" id="price" class="form-control" [defaultValue]="0"
+                <input type="number" id="price" class="form-control"
+                      min="1" [defaultValue]="0" onkeypress="return event.charCode >= 48"
                        placeholder="Price in Rupees" style="width: 150px"/>
               </div>
               <div class="mt-4 pt-2">
                 <input class="btn btn-primary btn-lg" style="margin-left: 40%; text-align: center; margin-top: -20px"
-                       type="button" value="Submit" (click)="signup()"/>
+                       type="submit" value="Submit" (click)="signup()"/>
               </div>
             </form>
           </div>

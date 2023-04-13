@@ -1,0 +1,70 @@
+<title> Showrooms </title>
+<body>
+<app-customerheader></app-customerheader>
+<div class="container my-4">
+  <div class="row">
+    <div class="col-md-4" >
+      <div class="card">
+        <div class="card-header">
+          Filters
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="min-price">Min Price:</label>
+            <input type="number" class="form-control" id="min-price" placeholder="Enter Min Price" [defaultValue]="0">
+          </div>
+          <div class="form-group">
+            <label for="max-price">Max Price:</label>
+            <input type="number" class="form-control" id="max-price" placeholder="Enter Max Price" [defaultValue]="10000">
+          </div>
+          <hr>
+          <h5>Select Car Types</h5>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="suv">
+            <label class="form-check-label" for="suv">SUV</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="hatchback">
+            <label class="form-check-label" for="hatchback">Hatchback</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="sedan">
+            <label class="form-check-label" for="sedan">Sedan</label>
+          </div>
+          <hr>
+          <h5>Select Lamination</h5>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="transparent">
+            <label class="form-check-label" for="transparent">Transparent and Glossy</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="matte">
+            <label class="form-check-label" for="matte">Matte PPFS</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="ultra-thick">
+            <label class="form-check-label" for="ultra-thick">Ultra Thick PPFS</label>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-primary btn-block" style="margin-bottom: 8px; margin-top: 8px" (click)="getAllDealers()">Apply Filters</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8" >
+      <div class="row">
+        <div class="col-sm-6 col-md-4" style="max-height: 80%; overflow-y: auto" *ngFor="let item of dealers">
+          <div class="card mb-4">
+            <img class="card-img-top" src="{{'http://localhost:8080' + '/customer/image/' + item.dealer.id + '/' + item.dealer.showroomPicture}}" alt="item image">
+            <div class="card-body">
+              <h5 class="card-title">{{ item.dealer.user.firstName }}</h5>
+              <p class="card-text">{{ item.dealer.showRoomAddress }}</p>
+              <p class="card-text">Rs. {{ item.price }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>

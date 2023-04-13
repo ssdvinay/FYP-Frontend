@@ -18,6 +18,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AdminloginComponent } from './adminlogin/adminlogin.component';
 import { BlacklistComponent } from './blacklist/blacklist.component';
+import { AllshowroomsComponent } from './allshowrooms/allshowrooms.component';
+import { CustomerheaderComponent } from './customerheader/customerheader.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { BlacklistComponent } from './blacklist/blacklist.component';
     HeaderComponent,
     FooterComponent,
     AdminloginComponent,
-    BlacklistComponent
+    BlacklistComponent,
+    AllshowroomsComponent,
+    CustomerheaderComponent
   ],
     imports: [
         BrowserModule,

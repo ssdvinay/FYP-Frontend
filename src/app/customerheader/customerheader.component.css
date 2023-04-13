@@ -1,0 +1,19 @@
+.navbar-nav .nav-link {
+  color: black;
+  font-weight: bold;
+}
+
+.navbar-nav .nav-link:hover {
+  color: black;
+  text-shadow: 0 0 10px #fff;
+}
+
+.navbar-nav .btn-danger {
+  font-weight: bold;
+}
+
+.navbar-nav .btn-danger:hover {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  text-shadow: 0 0 10px #fff;
+}

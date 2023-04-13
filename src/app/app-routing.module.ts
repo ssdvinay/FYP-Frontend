@@ -12,20 +12,22 @@ import {CustomerdetailsComponent} from "./customerdetails/customerdetails.compon
 import {DealerdetailsComponent} from "./dealerdetails/dealerdetails.component";
 import {AdminloginComponent} from "./adminlogin/adminlogin.component";
 import {BlacklistComponent} from "./blacklist/blacklist.component";
+import {AllshowroomsComponent} from "./allshowrooms/allshowrooms.component";
 
 const routes: Routes = [
   {path: '', component: HomepageComponent},
   {path: 'admin', component: AdminComponent},
   {path: 'signin', component: SigninComponent},
-  {path: 'dealer', component: DealerComponent},
+  {path: 'dealer/signup', component: DealerComponent},
   {path: 'admin/approval', component: ApprovalComponent},
-  {path: 'customer', component: CustomerComponent},
+  {path: 'customer/signup', component: CustomerComponent},
   {path: 'admin/customers', component: AllcustomersComponent},
   {path: 'admin/customers/:id', component: CustomerdetailsComponent},
   {path: 'admin/dealers', component: AlldealersComponent},
   {path: 'admin/dealers/:id', component: DealerdetailsComponent},
   {path: 'admin/login', component: AdminloginComponent},
-  {path: 'admin/blacklist', component: BlacklistComponent}
+  {path: 'admin/blacklist', component: BlacklistComponent},
+  {path: 'customer/showrooms', component: AllshowroomsComponent}
 ];
 
 @NgModule({

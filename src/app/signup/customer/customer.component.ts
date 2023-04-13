@@ -21,7 +21,9 @@ export class CustomerComponent {
       alert('Password do not match')
       return
     }
-    this.apiService.signup(user).subscribe({
+    const formData = new FormData()
+    formData.append('user', JSON.stringify(user))
+    this.apiService.signup(formData).subscribe({
       next: value => {
         alert('Successfully signed up');
         this.router.navigate([''])

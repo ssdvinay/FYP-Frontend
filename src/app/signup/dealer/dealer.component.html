@@ -3,7 +3,7 @@
     <div class="row justify-content-center align-items-center h-100" style="margin-top: -2%">
       <div class="col-12 col-lg-9 col-xl-7">
         <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
-          <div class="card-body p-4 p-md-5" style="height: 90vh">
+          <div class="card-body p-4 p-md-5" style="height: 92vh">
             <div style="margin-top: -5%">
               <a routerLink="">
                 <img src="/assets/Logo.png" style="float: left; margin-left: 15%" width="72" height="44" alt="image">
@@ -129,10 +129,14 @@
                 <input type="number" id="price" class="form-control"
                       min="1" [defaultValue]="0" onkeypress="return event.charCode >= 48"
                        placeholder="Price in Rupees" style="width: 150px"/>
+
+                <div class="form-check" style="margin-top: 6px; margin-left: 48px">
+                <input #fileInput type="file" (change)="onFileSelected($event)" accept="image/*">
+                </div>
               </div>
               <div class="mt-4 pt-2">
                 <input class="btn btn-primary btn-lg" style="margin-left: 40%; text-align: center; margin-top: -20px"
-                       type="submit" value="Submit" (click)="signup()"/>
+                       type="submit" value="Submit" (click)="signup($event)"/>
               </div>
             </form>
           </div>

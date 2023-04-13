@@ -13,6 +13,7 @@ import {DealerdetailsComponent} from "./dealerdetails/dealerdetails.component";
 import {AdminloginComponent} from "./adminlogin/adminlogin.component";
 import {BlacklistComponent} from "./blacklist/blacklist.component";
 import {AllshowroomsComponent} from "./allshowrooms/allshowrooms.component";
+import {NotfoundComponent} from "./notfound/notfound.component";
 
 const routes: Routes = [
   {path: '', component: HomepageComponent},
@@ -27,7 +28,8 @@ const routes: Routes = [
   {path: 'admin/dealers/:id', component: DealerdetailsComponent},
   {path: 'admin/login', component: AdminloginComponent},
   {path: 'admin/blacklist', component: BlacklistComponent},
-  {path: 'customer/showrooms', component: AllshowroomsComponent}
+  {path: 'customer/showrooms', component: AllshowroomsComponent},
+  {path: '**', component: NotfoundComponent}
 ];
 
 @NgModule({

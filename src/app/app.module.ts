@@ -20,6 +20,7 @@ import { AdminloginComponent } from './adminlogin/adminlogin.component';
 import { BlacklistComponent } from './blacklist/blacklist.component';
 import { AllshowroomsComponent } from './allshowrooms/allshowrooms.component';
 import { CustomerheaderComponent } from './customerheader/customerheader.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { CustomerheaderComponent } from './customerheader/customerheader.compone
     AdminloginComponent,
     BlacklistComponent,
     AllshowroomsComponent,
-    CustomerheaderComponent
+    CustomerheaderComponent,
+    NotfoundComponent
   ],
     imports: [
         BrowserModule,

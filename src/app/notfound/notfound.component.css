@@ -1,0 +1,14 @@
+.container {
+  margin-top: 50px;
+}
+
+.btn-primary {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-primary:hover {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  text-shadow: 0 0 10px #fff;
+}

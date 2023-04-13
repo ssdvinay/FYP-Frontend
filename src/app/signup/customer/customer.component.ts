@@ -23,7 +23,7 @@ export class CustomerComponent {
     }
     const formData = new FormData()
     formData.append('user', JSON.stringify(user))
-    this.apiService.signup(formData).subscribe({
+    this.apiService.signupCustomer(formData).subscribe({
       next: value => {
         alert('Successfully signed up');
         this.router.navigate([''])

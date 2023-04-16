@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {RESTAPIService} from "../apiservice.service";
 import {Router} from "@angular/router";
 import {HttpResponse} from "@angular/common/http";
-import {Util} from "../util";
+import {Role, Util} from "../util";
 import {ShowroomFilters} from "../showroom-filters";
 import {Showroom} from "../showroom";
+import {CustomerApiService} from "../customer-api-service";
 
 @Component({
   selector: 'app-allshowrooms',
@@ -14,7 +14,7 @@ import {Showroom} from "../showroom";
 export class AllshowroomsComponent implements OnInit {
   dealers: any
 
-  constructor(private apiService: RESTAPIService, private router: Router) {
+  constructor(private apiService: CustomerApiService, private router: Router) {
   }
 
   getAllDealers() {
@@ -44,7 +44,7 @@ export class AllshowroomsComponent implements OnInit {
         next: (value: HttpResponse<Showroom[]>) => {
           this.dealers = value
         },
-        error: err => Util.handleUnauthorized(err, this.router),
+        error: err => Util.handleUnauthorized(err, this.router, Role.Customer),
       }
     )
   }

@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {SigninComponent} from "./signin/signin.component";
 import {HomepageComponent} from "./homepage/homepage.component";
 import {DealerComponent} from "./signup/dealer/dealer.component";
 import {CustomerComponent} from "./signup/customer/customer.component";
@@ -14,11 +13,16 @@ import {AdminloginComponent} from "./adminlogin/adminlogin.component";
 import {BlacklistComponent} from "./blacklist/blacklist.component";
 import {AllshowroomsComponent} from "./allshowrooms/allshowrooms.component";
 import {NotfoundComponent} from "./notfound/notfound.component";
+import {CustomerhomepageComponent} from "./customerhomepage/customerhomepage.component";
+import {DealerhomepageComponent} from "./dealerhomepage/dealerhomepage.component";
+import {CustomerloginComponent} from "./customerlogin/customerlogin.component";
+import {DealerloginComponent} from "./dealerlogin/dealerlogin.component";
 
 const routes: Routes = [
   {path: '', component: HomepageComponent},
-  {path: 'admin', component: AdminComponent},
-  {path: 'signin', component: SigninComponent},
+  {path: 'admin/homepage', component: AdminComponent},
+  {path: 'customer/login', component: CustomerloginComponent},
+  {path: 'dealer/login', component: DealerloginComponent},
   {path: 'dealer/signup', component: DealerComponent},
   {path: 'admin/approval', component: ApprovalComponent},
   {path: 'customer/signup', component: CustomerComponent},
@@ -29,6 +33,8 @@ const routes: Routes = [
   {path: 'admin/login', component: AdminloginComponent},
   {path: 'admin/blacklist', component: BlacklistComponent},
   {path: 'customer/showrooms', component: AllshowroomsComponent},
+  {path: 'customer/homepage', component: CustomerhomepageComponent},
+  {path: 'dealer/homepage', component: DealerhomepageComponent},
   {path: '**', component: NotfoundComponent}
 ];
 

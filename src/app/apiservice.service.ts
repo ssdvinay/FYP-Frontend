@@ -5,8 +5,7 @@ import {Response} from "./response";
 import {Customer} from "./customer";
 import {Dealer} from "./dealer";
 import {Booking} from "./booking";
-import {ShowroomFilters} from "./showroom-filters";
-import {Showroom} from "./showroom";
+import {AppStrings} from "./app-strings";
 
 @Injectable({
   providedIn: 'root'
@@ -49,11 +48,6 @@ export class RESTAPIService {
     return this.http.get<HttpResponse<Dealer[]>>(url, this.getRequestOptions(this.getAuthorizationHeader()))
   }
 
-  getAllShowrooms(showroomFilters: ShowroomFilters): Observable<HttpResponse<Showroom[]>> {
-    let url = RESTAPIService.baseApi + "/customer/showrooms"
-    return this.http.put<HttpResponse<Showroom[]>>(url, showroomFilters, this.getRequestOptions(this.getAuthorizationHeader()))
-  }
-
   getAllCustomers(): Observable<HttpResponse<Customer[]>> {
     let url = RESTAPIService.baseApi + "/admin/customers"
     return this.http.get<HttpResponse<Customer[]>>(url, this.getRequestOptions(this.getAuthorizationHeader()))
@@ -87,9 +81,9 @@ export class RESTAPIService {
   getAuthorizationHeader()
     :
     String | null {
-    let emailOrUsername: String | null = localStorage.getItem('emailOrUsername')
+    let emailOrUsername: String | null = localStorage.getItem(AppStrings.emailOrUserName)
     if (emailOrUsername != null) {
-      let password: String | null = localStorage.getItem('password')
+      let password: String | null = localStorage.getItem(AppStrings.password)
       return btoa(emailOrUsername + ':' + password)
     }
     return null

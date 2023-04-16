@@ -14,7 +14,7 @@
   <div class="nav container">
     <h2>Admin Portal</h2>
     <ul class="navbar">
-      <li><a href="#" routerLink="/admin">Home</a></li>
+      <li><a href="#" routerLink="/admin/homepage">Home</a></li>
       <li><a routerLink="/admin/approval">approval</a></li>
       <li><a routerLink="/admin/blacklist">blacklist</a></li>
       <li><a>Users</a>
@@ -25,6 +25,6 @@
       </li>
       <li id="login"><a routerLink="/admin/login">Login</a></li>
     </ul>
-    <button class="btn btn-outline-primary" id="logout" (click)="logout()">Log out</button>
+    <button class="btn btn-danger" id="logout" (click)="logout()">Log out</button>
   </div>
 </header>

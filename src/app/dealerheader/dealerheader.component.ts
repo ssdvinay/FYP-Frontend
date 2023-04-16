@@ -1,27 +1,27 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Router} from "@angular/router";
 import {AppStrings} from "../app-strings";
 
 @Component({
-  selector: 'app-customerheader',
-  templateUrl: './customerheader.component.html',
-  styleUrls: ['./customerheader.component.css']
+  selector: 'app-dealerheader',
+  templateUrl: './dealerheader.component.html',
+  styleUrls: ['./dealerheader.component.css']
 })
-export class CustomerheaderComponent implements OnInit {
+export class DealerheaderComponent {
 
   constructor(private router: Router) {
   }
 
   logout() {
-    localStorage.removeItem(AppStrings.customerEmailOrUserName)
-    localStorage.removeItem(AppStrings.customerPassword)
+    localStorage.removeItem(AppStrings.dealerEmailOrUserName)
+    localStorage.removeItem(AppStrings.dealerPassword)
     alert('You have been logged out.')
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(() =>
-      this.router.navigate(['/customer/homepage']));
+      this.router.navigate(['/dealer/homepage']));
   }
 
   ngOnInit(): void {
-    let isLoginVisible: boolean = localStorage.getItem(AppStrings.customerEmailOrUserName) == null
+    let isLoginVisible: boolean = localStorage.getItem(AppStrings.dealerEmailOrUserName) == null
     // @ts-ignore
     document.getElementById('login').style.display = isLoginVisible ? "block" : "none"
     // @ts-ignore

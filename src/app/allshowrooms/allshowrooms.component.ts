@@ -23,6 +23,11 @@ export class AllshowroomsComponent implements OnInit {
     if (isNaN(minPrice)) minPrice = 0
     if (isNaN(maxPrice)) maxPrice = 10000
 
+    if (maxPrice < minPrice) {
+      alert('Min Price cannot be greater than Max Price')
+      return
+    }
+
     let sct: number[] = []
     if ((document.getElementById('sedan') as HTMLInputElement).checked)
       sct.push(2)
@@ -30,7 +35,7 @@ export class AllshowroomsComponent implements OnInit {
       sct.push(3)
     if ((document.getElementById('hatchback') as HTMLInputElement).checked)
       sct.push(1)
-    if (sct.length == 0) sct = [1, 2, 3]
+
     let spt: number[] = []
     if ((document.getElementById('transparent') as HTMLInputElement).checked)
       spt.push(1)
@@ -38,7 +43,7 @@ export class AllshowroomsComponent implements OnInit {
       spt.push(3)
     if ((document.getElementById('matte') as HTMLInputElement).checked)
       spt.push(2)
-    if (spt.length == 0) spt = [1, 2, 3]
+
     let showroomFilters = new ShowroomFilters(minPrice, maxPrice, sct, spt);
     this.apiService.getAllShowrooms(showroomFilters).subscribe({
         next: (value: HttpResponse<Showroom[]>) => {

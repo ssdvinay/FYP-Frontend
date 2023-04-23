@@ -1,5 +1,5 @@
-<section class="vh-100 gradient-custom" >
-  <div class="container py-5 h-100" >
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
     <div class="row justify-content-center align-items-center h-100" style="margin-top: -2%">
       <div class="col-12 col-lg-9 col-xl-7">
         <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
@@ -8,20 +8,22 @@
               <a routerLink="">
                 <img src="/assets/Logo.png" style="float: left; margin-left: 15%" width="72" height="44" alt="image">
               </a>
-              <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Dealer Registration Form</h3>
+              <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Update Dealer Details</h3>
             </div>
-            <form style="margin-top: -3%">
+            <form style="margin-top: -3%" [ngModel]="user" [ngModelOptions]="{standalone: true}">
               <div class="row">
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
-                    <input type="text" id="firstName" class="form-control form-control-lg" placeholder="First Name"/>
+                    <input type="text" id="firstName" class="form-control form-control-lg" placeholder="First Name"
+                           [value]="user.firstName"/>
                   </div>
 
                 </div>
                 <div class="col-md-6 mb-4">
 
                   <div class="form-outline">
-                    <input type="text" id="lastName" class="form-control form-control-lg" placeholder="Last Name"/>
+                    <input type="text" id="lastName" class="form-control form-control-lg" placeholder="Last Name"
+                           [value]="user.lastName"/>
                   </div>
 
                 </div>
@@ -31,14 +33,16 @@
                 <div class="col-md-6 mb-4 pb-2">
 
                   <div class="form-outline">
-                    <input type="email" id="emailAddress" class="form-control form-control-lg" placeholder="Email"/>
+                    <input type="email" id="emailAddress" class="form-control form-control-lg" placeholder="Email"
+                           [value]="user.email"/>
                   </div>
 
                 </div>
                 <div class="col-md-6 mb-4 pb-2">
 
                   <div class="form-outline">
-                    <input type="text" id="username" class="form-control form-control-lg" placeholder="Username"/>
+                    <input type="text" id="username" class="form-control form-control-lg" placeholder="Username"
+                           [value]="user.username"/>
                   </div>
 
                 </div>
@@ -48,7 +52,8 @@
                 <div class="col-md-6 mb-4 pb-2">
 
                   <div class="form-outline">
-                    <input type="tel" id="phoneNumber" class="form-control form-control-lg" placeholder="Phone Number"/>
+                    <input type="tel" id="phoneNumber" class="form-control form-control-lg" placeholder="Phone Number"
+                           [value]="user.phoneNumber"/>
                   </div>
 
                 </div>
@@ -56,7 +61,7 @@
                 <div class="col-md-6 mb-4 pb-2">
                   <div class="form-outline">
                     <input type="text" id="address" class="form-control form-control-lg"
-                           placeholder="Show Room Address"/>
+                           placeholder="Show Room Address" [value]="user.address"/>
                   </div>
                 </div>
               </div>
@@ -80,21 +85,24 @@
               <h6 style="margin-top: -3%">Supported Car Types</h6>
               <div style="display:flex; flex-direction: row; justify-content: start; align-items: flex-start">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="sedan">
+                  <input class="form-check-input" type="checkbox" value="" id="sedan"
+                         [checked]="user.supportedCarTypes.includes(2)">
                   <label class="form-check-label" for="sedan">
                     Sedan
                   </label>
                 </div>
                 <p>&nbsp; &nbsp; &nbsp;</p>
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="suv">
+                  <input class="form-check-input" type="checkbox" value="" id="suv"
+                         [checked]="user.supportedCarTypes.includes(3)">
                   <label class="form-check-label" for="suv">
                     SUV
                   </label>
                 </div>
                 <p>&nbsp; &nbsp; &nbsp;</p>
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="hatchback">
+                  <input class="form-check-input" type="checkbox" value="" id="hatchback"
+                         [checked]="user.supportedCarTypes.includes(1)">
                   <label class="form-check-label" for="suv">
                     Hatchback
                   </label>
@@ -104,21 +112,24 @@
               <h6>Supported Product Types</h6>
               <div style="display:flex; flex-direction: row; justify-content: start; align-items: flex-start">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="tng">
+                  <input class="form-check-input" type="checkbox" value="" id="tng"
+                         [checked]="user.supportedProductTypes.includes(1)">
                   <label class="form-check-label" for="tng">
                     Transparent and Glossy
                   </label>
                 </div>
                 <p>&nbsp; &nbsp; &nbsp;</p>
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="matte">
+                  <input class="form-check-input" type="checkbox" value="" id="matte"
+                         [checked]="user.supportedProductTypes.includes(2)">
                   <label class="form-check-label" for="matte">
                     Matte PPFS
                   </label>
                 </div>
                 <p>&nbsp; &nbsp; &nbsp;</p>
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="ut">
+                  <input class="form-check-input" type="checkbox" value="" id="ut"
+                         [checked]="user.supportedProductTypes.includes(3)">
                   <label class="form-check-label" for="ut">
                     Ultra Thick PPFS
                   </label>
@@ -127,11 +138,11 @@
               <div class="form-check" style="display: flex; flex-direction: row; margin-left: -7%">
                 <label class="form-control-lg">Rs. </label>
                 <input type="number" id="price" class="form-control"
-                      min="1" [defaultValue]="0" onkeypress="return event.charCode >= 48"
-                       placeholder="Price in Rupees" style="width: 150px"/>
+                       min="1" [defaultValue]="0" onkeypress="return event.charCode >= 48"
+                       placeholder="Price in Rupees" style="width: 150px" [value]="user.price"/>
 
                 <div class="form-check" style="margin-top: 6px; margin-left: 48px">
-                  <button type="button" data-toggle="modal" data-target="#imageModal">Upload Image</button>
+                  <button type="button" data-toggle="modal" data-target="#imageModal">View or Change Image</button>
 
                   <!-- Image Modal -->
                   <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
@@ -152,11 +163,13 @@
                       </div>
                     </div>
                   </div>
+
+
                 </div>
               </div>
               <div class="mt-4 pt-2">
                 <input class="btn btn-primary btn-lg" style="margin-left: 40%; text-align: center; margin-top: -20px"
-                       type="submit" value="Submit" (click)="signup($event)"/>
+                       type="submit" value="Update" (click)="update($event)"/>
               </div>
             </form>
           </div>

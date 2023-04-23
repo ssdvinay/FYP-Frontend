@@ -22,9 +22,8 @@
 .form-control {
   font-size: 16px;
 }
+
 .modal-image {
   max-width: 100%;
   max-height: calc(100vh - 200px);
 }
-
-

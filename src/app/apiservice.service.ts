@@ -17,11 +17,6 @@ export class RESTAPIService {
   constructor(private http: HttpClient) {
   }
 
-  signupCustomer(formData: FormData): Observable<any> {
-    let url = RESTAPIService.baseApi + "/register-customer"
-    return this.http.post(url, formData)
-  }
-
   signup(formData: FormData): Observable<any> {
     let url = RESTAPIService.baseApi + "/register"
     return this.http.post(url, formData)

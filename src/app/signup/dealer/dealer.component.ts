@@ -14,6 +14,7 @@ export class DealerComponent {
   @ViewChild('fileInput') fileInput: any;
   //private selectedFile: File;
   private selectedFile: File | null = null;
+  imageUrl: String = ''
 
 
   constructor(private apiService: RESTAPIService, private router: Router) {
@@ -28,6 +29,11 @@ export class DealerComponent {
       return;
     }
     this.selectedFile = file;
+    let reader = new FileReader();
+    reader.onload = (event: any) => {
+      this.imageUrl = event.target.result;
+    }
+    reader.readAsDataURL(file);
   }
 
 

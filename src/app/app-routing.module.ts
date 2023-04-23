@@ -17,6 +17,8 @@ import {CustomerhomepageComponent} from "./customerhomepage/customerhomepage.com
 import {DealerhomepageComponent} from "./dealerhomepage/dealerhomepage.component";
 import {CustomerloginComponent} from "./customerlogin/customerlogin.component";
 import {DealerloginComponent} from "./dealerlogin/dealerlogin.component";
+import {EditDealerDetailsComponent} from "./edit-dealer-details/edit-dealer-details.component";
+import {EditCustomerProfileComponent} from "./edit-customer-profile/edit-customer-profile.component";
 
 const routes: Routes = [
   {path: '', component: HomepageComponent},
@@ -34,7 +36,11 @@ const routes: Routes = [
   {path: 'admin/blacklist', component: BlacklistComponent},
   {path: 'customer/showrooms', component: AllshowroomsComponent},
   {path: 'customer/homepage', component: CustomerhomepageComponent},
+  {path: 'customer', component: CustomerhomepageComponent},
+  {path: 'dealer', component: DealerhomepageComponent},
   {path: 'dealer/homepage', component: DealerhomepageComponent},
+  {path: 'dealer/profile', component: EditDealerDetailsComponent},
+  {path: 'customer/profile', component: EditCustomerProfileComponent},
   {path: '**', component: NotfoundComponent}
 ];
 

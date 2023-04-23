@@ -26,6 +26,8 @@ import { DealerhomepageComponent } from './dealerhomepage/dealerhomepage.compone
 import { DealerheaderComponent } from './dealerheader/dealerheader.component';
 import { CustomerloginComponent } from './customerlogin/customerlogin.component';
 import { DealerloginComponent } from './dealerlogin/dealerlogin.component';
+import { EditDealerDetailsComponent } from './edit-dealer-details/edit-dealer-details.component';
+import { EditCustomerProfileComponent } from './edit-customer-profile/edit-customer-profile.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,8 @@ import { DealerloginComponent } from './dealerlogin/dealerlogin.component';
     DealerheaderComponent,
     CustomerloginComponent,
     DealerloginComponent,
+    EditDealerDetailsComponent,
+    EditCustomerProfileComponent,
   ],
   imports: [
     BrowserModule,

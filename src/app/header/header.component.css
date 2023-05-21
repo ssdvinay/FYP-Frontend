@@ -21,7 +21,7 @@ header {
 .navbar {
   display: flex;
   column-gap: 2rem;
-  margin-left: 20%;
+  margin-left: 10%;
 }
 
 .navbar li {

@@ -1,0 +1,56 @@
+<body style="padding-top: 48px">
+<app-header></app-header>
+<div class="container">
+  <!-- Navigation options -->
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="activeTab === 'all-complaints'" (click)="changeTab('all-complaints')">All Complaints</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="activeTab === 'dealer-complaints'" (click)="changeTab('dealer-complaints')">Dealers Complaint Count</a>
+    </li>
+  </ul>
+
+  <!-- Content area -->
+  <div class="tab-content" style="overflow-y: auto">
+    <!-- All Complaints section -->
+    <div class="tab-pane fade" [ngClass]="{ 'show active': activeTab === 'all-complaints' }">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Customer Name</th>
+          <th>Dealer Name</th>
+          <th>Complaint</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let complaint of allComplaints">
+          <td>{{ complaint.customerName }}</td>
+          <td>{{ complaint.dealerName }}</td>
+          <td>{{ complaint.complaint }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Dealers Complaint Count section -->
+    <div class="tab-pane fade" [ngClass]="{ 'show active': activeTab === 'dealer-complaints' }">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Dealer Name</th>
+          <th>Complaint Count</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let dealer of dealerComplaints">
+          <td>{{ dealer.dealerName }}</td>
+          <td>{{ dealer.complaints }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
+</body>

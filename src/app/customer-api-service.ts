@@ -7,6 +7,9 @@ import {RESTAPIService} from "./apiservice.service";
 import {AppStrings} from "./app-strings";
 import {Response} from "./response";
 import {CustomerUpdateDto} from "./customer-update-dto";
+import {Dealer} from "./dealer";
+import {CustomerComplaint} from "./customer-complaint";
+import {DealerComplaints} from "./dealer-complaints";
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +21,33 @@ export class CustomerApiService {
   constructor(private http: HttpClient) {
   }
 
+  getAllComplaints(): Observable<HttpResponse<CustomerComplaint[]>> {
+    let url = CustomerApiService.customerBaseApi + "/complaints"
+    return this.http.get<HttpResponse<CustomerComplaint[]>>(url, this.getRequestOptions())
+  }
+
+  getComplaintsCount(): Observable<HttpResponse<DealerComplaints[]>> {
+    let url = CustomerApiService.customerBaseApi + "/complaints/count"
+    return this.http.get<HttpResponse<DealerComplaints[]>>(url, this.getRequestOptions())
+  }
+
   getAllShowrooms(showroomFilters: ShowroomFilters): Observable<HttpResponse<Showroom[]>> {
     let url = CustomerApiService.customerBaseApi + "/showrooms"
     return this.http.put<HttpResponse<Showroom[]>>(url, showroomFilters, this.getRequestOptions())
+  }
+
+  getAllDealers(): Observable<HttpResponse<Dealer[]>> {
+    let url = CustomerApiService.customerBaseApi + "/dealers"
+    return this.http.get<HttpResponse<Dealer[]>>(url, this.getRequestOptions());
+  }
+
+  sendComplaint(dealerId: number, complaint: string): Observable<HttpResponse<Response<string>>> {
+    let url = CustomerApiService.customerBaseApi + "/complain"
+    let body = {
+      id: dealerId,
+      complaint: complaint
+    }
+    return this.http.put<HttpResponse<Response<string>>>(url, body, this.getRequestOptions())
   }
 
   getCustomerDetails(): Observable<HttpResponse<Response<CustomerUpdateDto>>> {

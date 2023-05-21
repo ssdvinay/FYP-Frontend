@@ -28,6 +28,8 @@ import { CustomerloginComponent } from './customerlogin/customerlogin.component'
 import { DealerloginComponent } from './dealerlogin/dealerlogin.component';
 import { EditDealerDetailsComponent } from './edit-dealer-details/edit-dealer-details.component';
 import { EditCustomerProfileComponent } from './edit-customer-profile/edit-customer-profile.component';
+import { CustomerComplaintComponent } from './customer-complaint/customer-complaint.component';
+import { ComplaintsPageComponent } from './complaints-page/complaints-page.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,8 @@ import { EditCustomerProfileComponent } from './edit-customer-profile/edit-custo
     DealerloginComponent,
     EditDealerDetailsComponent,
     EditCustomerProfileComponent,
+    CustomerComplaintComponent,
+    ComplaintsPageComponent,
   ],
   imports: [
     BrowserModule,

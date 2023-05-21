@@ -1,0 +1,50 @@
+<!-- Import Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<title> Customer Complaint </title>
+<body>
+<app-customerheader></app-customerheader>
+<div class="container">
+  <div class="form-group">
+    <label for="search">Search Dealer:</label>
+    <input type="text" class="form-control" id="search" [(ngModel)]="searchQuery" (input)="searchDealers()">
+  </div>
+
+  <div class="row">
+    <div class="col-md-3" *ngFor="let dealer of filteredDealers">
+      <div class="card mb-3">
+        <img src="{{'http://localhost:8080' + '/customer/image/' + dealer.id + '/' + dealer.showroomPicture}}" class="card-img-top" alt="Dealer Image" style="height: 228px">
+        <div class="card-body">
+          <h5 class="card-title">{{ dealer.user.firstName + " " + dealer.user.lastName}}</h5>
+          <p class="card-text">{{ dealer.showRoomAddress }}</p>
+<!--          <button class="btn btn-danger" (click)="openComplaintModal(dealer)">Complain</button>-->
+          <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#imageModal" (click)="openComplaintModal(dealer)">Complain</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<!-- Complaint Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Complaint Modal</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeComplaintModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <textarea class="form-control" rows="5" [(ngModel)]="complaint"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close" (click)="closeComplaintModal()">Cancel</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close" (click)="sendComplaint()">Send Complaint</button>
+      </div>
+    </div>
+  </div>
+</div>

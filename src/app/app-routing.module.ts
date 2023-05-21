@@ -19,6 +19,8 @@ import {CustomerloginComponent} from "./customerlogin/customerlogin.component";
 import {DealerloginComponent} from "./dealerlogin/dealerlogin.component";
 import {EditDealerDetailsComponent} from "./edit-dealer-details/edit-dealer-details.component";
 import {EditCustomerProfileComponent} from "./edit-customer-profile/edit-customer-profile.component";
+import {CustomerComplaintComponent} from "./customer-complaint/customer-complaint.component";
+import {ComplaintsPageComponent} from "./complaints-page/complaints-page.component";
 
 const routes: Routes = [
   {path: '', component: HomepageComponent},
@@ -41,6 +43,10 @@ const routes: Routes = [
   {path: 'dealer/homepage', component: DealerhomepageComponent},
   {path: 'dealer/profile', component: EditDealerDetailsComponent},
   {path: 'customer/profile', component: EditCustomerProfileComponent},
+  {path: 'customer/complain', component: CustomerComplaintComponent},
+  {path: 'admin/complaints', component: ComplaintsPageComponent},
+  { path: 'admin/complaints/all-complaints', component: ComplaintsPageComponent },
+  { path: 'admin/complaints/dealer-complaints', component: ComplaintsPageComponent },
   {path: '**', component: NotfoundComponent}
 ];
 

@@ -57,7 +57,7 @@
           <div class="card mb-4">
             <img class="card-img-top" src="{{'http://localhost:8080' + '/customer/image/' + item.dealer.id + '/' + item.dealer.showroomPicture}}" alt="item image" style="height: 228px">
             <div class="card-body">
-              <h5 class="card-title">{{ item.dealer.user.firstName }}</h5>
+              <h5 class="card-title">{{ item.dealer.user.firstName + " " + item.dealer.user.lastName}}</h5>
               <p class="card-text">{{ item.dealer.showRoomAddress }}</p>
               <p class="card-text">Rs. {{ item.price }}</p>
             </div>

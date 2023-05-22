@@ -32,7 +32,7 @@ export class DealerBookingsListComponent implements OnInit {
   confirmBooking(booking: Booking) {
     this.apiService.updateBookingStatus(booking.id, "CONFIRMED").subscribe({
       next: (value: HttpResponse<Response<string>>) => {
-        alert(value)
+        alert(value.body)
         this.ngOnInit()
       },
       error: err => Util.handleUnauthorized(err, this.router, Role.Dealer),

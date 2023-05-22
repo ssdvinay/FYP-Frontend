@@ -1,4 +1,4 @@
 export class CarType {
-  constructor(public id: Number, public type: String) {
+  constructor(public id: number, public type: string) {
   }
 }

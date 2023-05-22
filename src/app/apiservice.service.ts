@@ -17,6 +17,11 @@ export class RESTAPIService {
   constructor(private http: HttpClient) {
   }
 
+  getAllBookings(): Observable<HttpResponse<Booking[]>> {
+    let url = RESTAPIService.baseApi + "/admin/bookings"
+    return this.http.get<HttpResponse<Booking[]>>(url, this.getRequestOptions(this.getAuthorizationHeader()))
+  }
+
   signup(formData: FormData): Observable<any> {
     let url = RESTAPIService.baseApi + "/register"
     return this.http.post(url, formData)

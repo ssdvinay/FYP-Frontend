@@ -1,0 +1,35 @@
+<body style="padding-top: 48px">
+<app-header></app-header>
+<h4>All Bookings History</h4>
+<div class="container" style="overflow-y: auto; height: 400px">
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>Booking ID</th>
+      <th>Customer Name</th>
+      <th>Dealer Name</th>
+      <th>Booking Date</th>
+      <th>Created Date</th>
+      <th>Car Type</th>
+      <th>Product Type</th>
+      <th>Price</th>
+      <th>Booking Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let booking of bookings">
+      <td>{{ booking.id }}</td>
+      <td>{{ booking.customer.user.firstName + " " + booking.customer.user.lastName }}</td>
+      <td>{{ booking.dealer.user.firstName + " " + booking.dealer.user.lastName }}</td>
+      <td>{{ booking.bookingDate }}</td>
+      <td>{{ booking.createdAt }}</td>
+      <td>{{ booking.carType?.type }}</td>
+      <td>{{ booking.productType?.type }}</td>
+      <td>Rs. {{ booking.price }}</td>
+      <td [ngClass]="getBookingStatusClass(booking.bookingStatus)"><strong>{{ booking.bookingStatus }}</strong></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<app-footer></app-footer>
+</body>

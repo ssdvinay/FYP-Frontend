@@ -2,11 +2,10 @@ import {HttpClient, HttpHeaders, HttpResponse} from "@angular/common/http";
 import {AppStrings} from "./app-strings";
 import {Observable} from "rxjs";
 import {Response} from "./response";
-import {Dealer} from "./dealer";
 import {RESTAPIService} from "./apiservice.service";
 import {Injectable} from "@angular/core";
-import {User} from "./user";
 import {UpdateDto} from "./update-dto";
+import {Booking} from "./booking";
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +38,16 @@ export class DealerApiService {
     }
   }
 
+  updateBookingStatus(bookingId: number, status: String): Observable<HttpResponse<Response<string>>> {
+    let url = DealerApiService.dealerBaseApi + "/bookings/" + bookingId + "/update-status?status=" + status
+    return this.http.put<HttpResponse<Response<string>>>(url, null, this.getRequestOptions())
+  }
+
+  getDealerBookings(): Observable<HttpResponse<Booking[]>> {
+    let url = DealerApiService.dealerBaseApi + "/bookings"
+    return this.http.get<HttpResponse<Booking[]>>(url, this.getRequestOptions())
+  }
+
   getDealerDetails(): Observable<HttpResponse<Response<UpdateDto>>> {
     let url = DealerApiService.dealerBaseApi + "/" + localStorage.getItem(AppStrings.dealerEmailOrUserName)
     return this.http.get<any>(url, this.getRequestOptions())
@@ -49,7 +58,7 @@ export class DealerApiService {
     const headers = {
       'Authorization': 'Basic ' + this.getAuthorizationHeader(),
     }
-    let option =  {
+    let option = {
       headers: new HttpHeaders(headers),
     }
     return this.http.put(url, formData, option)

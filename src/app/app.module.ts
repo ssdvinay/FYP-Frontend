@@ -30,6 +30,10 @@ import { EditDealerDetailsComponent } from './edit-dealer-details/edit-dealer-de
 import { EditCustomerProfileComponent } from './edit-customer-profile/edit-customer-profile.component';
 import { CustomerComplaintComponent } from './customer-complaint/customer-complaint.component';
 import { ComplaintsPageComponent } from './complaints-page/complaints-page.component';
+import { CustomerBookingPageComponent } from './customer-booking-page/customer-booking-page.component';
+import { CustomerBookingsListComponent } from './customer-bookings-list/customer-bookings-list.component';
+import { DealerBookingsListComponent } from './dealer-bookings-list/dealer-bookings-list.component';
+import { AdminBookingsListComponent } from './admin-bookings-list/admin-bookings-list.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +62,10 @@ import { ComplaintsPageComponent } from './complaints-page/complaints-page.compo
     EditCustomerProfileComponent,
     CustomerComplaintComponent,
     ComplaintsPageComponent,
+    CustomerBookingPageComponent,
+    CustomerBookingsListComponent,
+    DealerBookingsListComponent,
+    AdminBookingsListComponent,
   ],
   imports: [
     BrowserModule,

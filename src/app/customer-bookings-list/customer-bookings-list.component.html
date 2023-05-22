@@ -1,0 +1,32 @@
+<body>
+<app-customerheader></app-customerheader>
+<div class="container">
+  <h3>Customer Bookings</h3>
+  <table class="table table-bordered" style="overflow-y: auto">
+    <thead>
+    <tr>
+      <th>Booking ID</th>
+      <th>Dealer Name</th>
+      <th>Dealer Address</th>
+      <th>Booking Date</th>
+      <th>Car Type</th>
+      <th>Product Type</th>
+      <th>Price</th>
+      <th>Booking Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let booking of bookings">
+      <td>{{ booking.id }}</td>
+      <td>{{ booking.dealer.user.firstName + " " + booking.dealer.user.lastName }}</td>
+      <td>{{ booking.dealer.showRoomAddress }}</td>
+      <td>{{ booking.bookingDate }}</td>
+      <td>{{ booking.carType?.type }}</td>
+      <td>{{ booking.productType?.type }}</td>
+      <td>{{ booking.price }}</td>
+      <td [ngClass]="getBookingStatusClass(booking.bookingStatus)"><strong>{{ booking.bookingStatus }}</strong></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>

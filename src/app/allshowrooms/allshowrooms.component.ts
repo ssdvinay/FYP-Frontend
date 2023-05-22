@@ -5,6 +5,8 @@ import {Role, Util} from "../util";
 import {ShowroomFilters} from "../showroom-filters";
 import {Showroom} from "../showroom";
 import {CustomerApiService} from "../customer-api-service";
+import {Dealer} from "../dealer";
+import {ShowroomSharedService} from "../showroom-shared-service";
 
 @Component({
   selector: 'app-allshowrooms',
@@ -14,7 +16,7 @@ import {CustomerApiService} from "../customer-api-service";
 export class AllshowroomsComponent implements OnInit {
   dealers: any
 
-  constructor(private apiService: CustomerApiService, private router: Router) {
+  constructor(private apiService: CustomerApiService, private router: Router, private showroomSharedService: ShowroomSharedService) {
   }
 
   getAllDealers() {
@@ -56,5 +58,10 @@ export class AllshowroomsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllDealers()
+  }
+
+  createBooking(showroom: Showroom) {
+    this.showroomSharedService.showRoom = showroom
+    this.router.navigate(['/customer/booking'])
   }
 }

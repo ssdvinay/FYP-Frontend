@@ -10,6 +10,9 @@ import {CustomerUpdateDto} from "./customer-update-dto";
 import {Dealer} from "./dealer";
 import {CustomerComplaint} from "./customer-complaint";
 import {DealerComplaints} from "./dealer-complaints";
+import {CarType} from "./car-type";
+import {ProductType} from "./product-type";
+import {Booking} from "./booking";
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +22,26 @@ export class CustomerApiService {
   private static readonly customerBaseApi = RESTAPIService.baseApi + '/customer';
 
   constructor(private http: HttpClient) {
+  }
+
+  getCustomerBookings(): Observable<HttpResponse<Booking[]>> {
+    let url = CustomerApiService.customerBaseApi + "/bookings"
+    return this.http.get<HttpResponse<Booking[]>>(url, this.getRequestOptions())
+  }
+
+  saveBooking(booking: Booking): Observable<HttpResponse<Response<string>>> {
+    let url = CustomerApiService.customerBaseApi + "/booking"
+    return this.http.post<HttpResponse<Response<string>>>(url, booking, this.getRequestOptions())
+  }
+
+  getSupportedCarTypesByDealer(dealerId: number): Observable<HttpResponse<CarType[]>> {
+    let url = CustomerApiService.customerBaseApi + "/dealers/" + dealerId + "/carTypes"
+    return this.http.get<HttpResponse<CarType[]>>(url, this.getRequestOptions())
+  }
+
+  getSupportedProductTypesByDealer(dealerId: number): Observable<HttpResponse<ProductType[]>> {
+    let url = CustomerApiService.customerBaseApi + "/dealers/" + dealerId + "/productTypes"
+    return this.http.get<HttpResponse<ProductType[]>>(url, this.getRequestOptions())
   }
 
   getAllComplaints(): Observable<HttpResponse<CustomerComplaint[]>> {

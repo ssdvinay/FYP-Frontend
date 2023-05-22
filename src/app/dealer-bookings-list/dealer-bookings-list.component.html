@@ -1,0 +1,38 @@
+<body>
+<app-dealerheader></app-dealerheader>
+<div class="container">
+  <h3>Dealer Bookings</h3>
+  <table class="table table-bordered" style="overflow-y: auto">
+    <thead>
+    <tr>
+      <th>Booking ID</th>
+      <th>Customer Name</th>
+      <th>Booking Date</th>
+      <th>Car Type</th>
+      <th>Product Type</th>
+      <th>Price</th>
+      <th>Booking Status</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let booking of bookings">
+      <td>{{ booking.id }}</td>
+      <td>{{ booking.customer.user.firstName + " " + booking.customer.user.lastName }}</td>
+      <td>{{ booking.bookingDate }}</td>
+      <td>{{ booking.carType?.type }}</td>
+      <td>{{ booking.productType?.type }}</td>
+      <td>Rs. {{ booking.price }}</td>
+      <td [ngClass]="getBookingStatusClass(booking.bookingStatus)"><strong>{{ booking.bookingStatus }}</strong></td>
+      <ng-container *ngIf="booking.bookingStatus === 'PENDING'">
+        <button style="margin: 8px; background-color: green" class="btn btn-success" (click)="confirmBooking(booking)">Confirm</button>
+        <button style="background-color: darkred" class="btn btn-danger" (click)="rejectBooking(booking)">Reject</button>
+      </ng-container>
+      <ng-container *ngIf="booking.bookingStatus !== 'PENDING'">
+        <p>No Action Required</p>
+      </ng-container>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>

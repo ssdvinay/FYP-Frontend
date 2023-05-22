@@ -3,7 +3,7 @@ import {DealerCarProduct} from "./dealer-car-product";
 import {RESTAPIService} from "./apiservice.service";
 
 export class Dealer {
-  constructor(public id: Number,
+  constructor(public id: number,
               public showRoomAddress: String,
               public approvalStatus: String,
               public user: User,

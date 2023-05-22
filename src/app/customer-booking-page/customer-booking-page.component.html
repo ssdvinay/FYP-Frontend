@@ -1,0 +1,64 @@
+<body>
+<app-customerheader></app-customerheader>
+<div class="container">
+  <!-- Header Card -->
+  <div class="card mb-3">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img class="card-img"
+             src="{{'http://localhost:8080' + '/customer/image/' + showroom.dealer.id + '/' + showroom.dealer.showroomPicture}}"
+             alt="item image" style="height: 228px; width: 228px">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body" style="margin-left: -120px">
+          <h5 class="card-title">{{showroom.dealer.user.firstName + " " + showroom.dealer.user.lastName}}</h5>
+          <p class="card-text">{{showroom.dealer.showRoomAddress}}</p>
+          <p class="card-text">{{showroom.dealer.user.phoneNumber}}</p>
+          <p class="card-text">{{showroom.dealer.user.email}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dropdowns -->
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="carType">Select Car Type</label>
+        <select class="form-control" id="carType" [(ngModel)]="selectedCarType">
+          <option *ngFor="let item of supportedCarTypes" [value]="item">{{item.type}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="productType">Select Product Type</label>
+        <select class="form-control" id="productType" [(ngModel)]="selectedProductType" required>
+          <option *ngFor="let item of supportedProductTypes" [value]="item">{{item.type}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Booking Date -->
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="bookingDate">Booking Date</label>
+        <input type="date" class="form-control" id="bookingDate" [(ngModel)]="selectedDate" required>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input type="text" class="form-control" id="price" value="Rs. {{showroom.price}}" disabled>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col text-center">
+    <button class="btn btn-primary" style="margin-top: 32px" (click)="createBooking()">Confirm Booking</button>
+  </div>
+</div>
+</body>

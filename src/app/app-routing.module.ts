@@ -21,6 +21,10 @@ import {EditDealerDetailsComponent} from "./edit-dealer-details/edit-dealer-deta
 import {EditCustomerProfileComponent} from "./edit-customer-profile/edit-customer-profile.component";
 import {CustomerComplaintComponent} from "./customer-complaint/customer-complaint.component";
 import {ComplaintsPageComponent} from "./complaints-page/complaints-page.component";
+import {CustomerBookingPageComponent} from "./customer-booking-page/customer-booking-page.component";
+import {CustomerBookingsListComponent} from "./customer-bookings-list/customer-bookings-list.component";
+import {DealerBookingsListComponent} from "./dealer-bookings-list/dealer-bookings-list.component";
+import {AdminBookingsListComponent} from "./admin-bookings-list/admin-bookings-list.component";
 
 const routes: Routes = [
   {path: '', component: HomepageComponent},
@@ -28,6 +32,7 @@ const routes: Routes = [
   {path: 'customer/login', component: CustomerloginComponent},
   {path: 'dealer/login', component: DealerloginComponent},
   {path: 'dealer/signup', component: DealerComponent},
+  {path: 'dealer/bookings', component: DealerBookingsListComponent},
   {path: 'admin/approval', component: ApprovalComponent},
   {path: 'customer/signup', component: CustomerComponent},
   {path: 'admin/customers', component: AllcustomersComponent},
@@ -44,7 +49,10 @@ const routes: Routes = [
   {path: 'dealer/profile', component: EditDealerDetailsComponent},
   {path: 'customer/profile', component: EditCustomerProfileComponent},
   {path: 'customer/complain', component: CustomerComplaintComponent},
+  {path: 'customer/booking', component: CustomerBookingPageComponent},
+  {path: 'customer/bookings', component: CustomerBookingsListComponent},
   {path: 'admin/complaints', component: ComplaintsPageComponent},
+  {path: 'admin/bookings', component: AdminBookingsListComponent},
   { path: 'admin/complaints/all-complaints', component: ComplaintsPageComponent },
   { path: 'admin/complaints/dealer-complaints', component: ComplaintsPageComponent },
   {path: '**', component: NotfoundComponent}

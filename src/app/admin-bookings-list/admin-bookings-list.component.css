@@ -18,3 +18,26 @@ app-footer {
   width: 100%;
   right: 0;
 }
+
+.cmodel {
+  cursor: pointer;
+}
+
+.name {
+  cursor: pointer;
+  color: #007bff; /* or any other color you prefer */
+  text-decoration: none;
+  transition: color 0.3s ease; /* smooth transition when color changes */
+}
+
+.name:hover {
+  color: #ff9900; /* or any other color you prefer */
+}
+
+.name:focus {
+  outline: none;
+}
+
+.name:active {
+  color: #ff3300; /* or any other color you prefer */
+}

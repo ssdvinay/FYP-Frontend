@@ -19,8 +19,10 @@
     <tbody>
     <tr *ngFor="let booking of bookings">
       <td>{{ booking.id }}</td>
-      <td>{{ booking.customer.user.firstName + " " + booking.customer.user.lastName }}</td>
-      <td>{{ booking.dealer.user.firstName + " " + booking.dealer.user.lastName }}</td>
+      <td class="name"
+          (click)="openCustomerDetailsModal(booking)">{{ booking.customer.user.firstName + " " + booking.customer.user.lastName }}</td>
+      <td class="name"
+          (click)="openDealerDetailsModal(booking)">{{ booking.dealer.user.firstName + " " + booking.dealer.user.lastName }}</td>
       <td>{{ booking.bookingDate }}</td>
       <td>{{ booking.createdAt }}</td>
       <td>{{ booking.carType?.type }}</td>

@@ -18,7 +18,7 @@
     <tbody>
     <tr *ngFor="let booking of bookings">
       <td>{{ booking.id }}</td>
-      <td>{{ booking.customer.user.firstName + " " + booking.customer.user.lastName }}</td>
+      <td class="name" type="button" (click)="openCustomerDetailsModal(booking)">{{ booking.customer.user.firstName + " " + booking.customer.user.lastName }}</td>
       <td>{{ booking.bookingDate }}</td>
       <td>{{ booking.carType?.type }}</td>
       <td>{{ booking.productType?.type }}</td>

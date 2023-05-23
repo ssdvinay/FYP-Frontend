@@ -35,6 +35,8 @@ import { CustomerBookingsListComponent } from './customer-bookings-list/customer
 import { DealerBookingsListComponent } from './dealer-bookings-list/dealer-bookings-list.component';
 import { AdminBookingsListComponent } from './admin-bookings-list/admin-bookings-list.component';
 import { DealerCustomersListComponent } from './dealer-customers-list/dealer-customers-list.component';
+import { DealerDetailsModalComponent } from './dealer-details-modal/dealer-details-modal.component';
+import { CustomerDetailsModalComponent } from './customer-details-modal/customer-details-modal.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +70,8 @@ import { DealerCustomersListComponent } from './dealer-customers-list/dealer-cus
     DealerBookingsListComponent,
     AdminBookingsListComponent,
     DealerCustomersListComponent,
+    DealerDetailsModalComponent,
+    CustomerDetailsModalComponent,
   ],
   imports: [
     BrowserModule,

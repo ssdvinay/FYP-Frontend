@@ -1,0 +1,22 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ dealer?.user?.firstName + " " + dealer?.user?.lastName}}</h4>
+  <button type="button" class="close modal-close-button" data-dismiss="modal" aria-label="Close"
+          (click)="onCloseModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div>
+    <img src="{{'http://localhost:8080' + '/customer/image/' + dealer?.id + '/' + dealer?.showroomPicture}}"
+         class="card-img-top" alt="Dealer Image" style="height: 350px">
+  </div>
+  <div>
+    <strong>Phone Number:</strong> {{ dealer?.user?.phoneNumber }}
+  </div>
+  <div>
+    <strong>Email:</strong> {{ dealer?.user?.email }}
+  </div>
+  <div>
+    <strong>Address:</strong> {{ dealer?.showRoomAddress }}
+  </div>
+</div>

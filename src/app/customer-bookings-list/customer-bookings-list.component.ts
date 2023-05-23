@@ -4,6 +4,8 @@ import {CustomerApiService} from "../customer-api-service";
 import {HttpResponse} from "@angular/common/http";
 import {Booking} from "../booking";
 import {Role, Util} from "../util";
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {DealerDetailsModalComponent} from "../dealer-details-modal/dealer-details-modal.component";
 
 @Component({
   selector: 'app-customer-bookings-list',
@@ -13,9 +15,18 @@ import {Role, Util} from "../util";
 export class CustomerBookingsListComponent implements OnInit {
   bookings: any
 
+  selectedBooking: Booking | null = null;
+
   constructor(
     private router: Router,
-    private apiService: CustomerApiService) {
+    private apiService: CustomerApiService,
+    private modalService: NgbModal) {
+  }
+
+  openDealerDetailsModal(booking: Booking) {
+    this.selectedBooking = booking;
+    const modalRef = this.modalService.open(DealerDetailsModalComponent);
+    modalRef.componentInstance.dealer = booking.dealer;
   }
 
   ngOnInit(): void {

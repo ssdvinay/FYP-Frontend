@@ -22,9 +22,10 @@ section{
 .home-text p{
   font-size: 25px;
   font-weight: 300;
+  margin-top: 5%;
 }
 .image{
-  margin-left:40%;
+  margin-left:57%;
   width: 657px;
   height: 458px;
   margin-top:-280px;

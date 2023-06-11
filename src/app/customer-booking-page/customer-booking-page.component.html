@@ -26,7 +26,7 @@
       <div class="form-group">
         <label for="carType">Select Car Type</label>
         <select class="form-control" id="carType" [(ngModel)]="selectedCarType">
-          <option *ngFor="let item of supportedCarTypes" [value]="item">{{item.type}}</option>
+          <option *ngFor="let item of supportedCarTypes" [ngValue]="item">{{item.type}}</option>
         </select>
       </div>
     </div>
@@ -34,7 +34,7 @@
       <div class="form-group">
         <label for="productType">Select Product Type</label>
         <select class="form-control" id="productType" [(ngModel)]="selectedProductType" required>
-          <option *ngFor="let item of supportedProductTypes" [value]="item">{{item.type}}</option>
+          <option *ngFor="let item of supportedProductTypes" [ngValue]="item">{{item.type}}</option>
         </select>
       </div>
     </div>

@@ -1,4 +1,3 @@
-
 <body>
 <app-customerheader></app-customerheader>
 <div class="container">
@@ -14,20 +13,58 @@
       <th>Product Type</th>
       <th>Price</th>
       <th>Booking Status</th>
+      <th>Feedback</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let booking of bookings">
       <td>{{ booking.id }}</td>
-      <td class="name" type="button" (click)="openDealerDetailsModal(booking)">{{ booking.dealer.user.firstName + " " + booking.dealer.user.lastName }}</td>
+      <td class="name" type="button"
+          (click)="openDealerDetailsModal(booking)">{{ booking.dealer.user.firstName + " " + booking.dealer.user.lastName }}</td>
       <td>{{ booking.dealer.showRoomAddress }}</td>
       <td>{{ booking.bookingDate }}</td>
       <td>{{ booking.carType?.type }}</td>
       <td>{{ booking.productType?.type }}</td>
       <td>{{ booking.price }}</td>
       <td [ngClass]="getBookingStatusClass(booking.bookingStatus)"><strong>{{ booking.bookingStatus }}</strong></td>
+      <td>
+        <ng-container *ngIf="booking.bookingStatus == 'CONFIRMED'">
+          <ng-container *ngIf="booking.feedback != null; else feedbackButton">
+            {{booking.feedback}}
+          </ng-container>
+          <ng-template #feedbackButton>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#feedbackModal"
+                    (click)="openFeedbackModal(booking)">Submit
+            </button>
+          </ng-template>
+        </ng-container>
+      </td>
     </tr>
     </tbody>
   </table>
 </div>
-</body>
+
+<div class="modal fade" id="feedbackModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Feedback Modal</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeFeedbackModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <textarea class="form-control" rows="5" [(ngModel)]="feedbackText"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close"
+                (click)="closeFeedbackModal()">Cancel
+        </button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close"
+                (click)="submitFeedback()">Submit Feedback
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

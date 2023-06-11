@@ -24,6 +24,15 @@ export class CustomerApiService {
   constructor(private http: HttpClient) {
   }
 
+  submitFeedback(bookingId: number, feedback: string): Observable<HttpResponse<Response<string>>> {
+    let url = CustomerApiService.customerBaseApi + "/booking/feedback"
+    let body = {
+      bookingId: bookingId,
+      feedback: feedback
+    }
+    return this.http.put<HttpResponse<Response<string>>>(url, body, this.getRequestOptions())
+  }
+
   getCustomerBookings(): Observable<HttpResponse<Booking[]>> {
     let url = CustomerApiService.customerBaseApi + "/bookings"
     return this.http.get<HttpResponse<Booking[]>>(url, this.getRequestOptions())

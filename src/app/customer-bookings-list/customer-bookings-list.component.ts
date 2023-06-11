@@ -6,6 +6,7 @@ import {Booking} from "../booking";
 import {Role, Util} from "../util";
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {DealerDetailsModalComponent} from "../dealer-details-modal/dealer-details-modal.component";
+import {Response} from "../response";
 
 @Component({
   selector: 'app-customer-bookings-list',
@@ -17,6 +18,8 @@ export class CustomerBookingsListComponent implements OnInit {
 
   selectedBooking: Booking | null = null;
 
+  feedbackText: string = '';
+
   constructor(
     private router: Router,
     private apiService: CustomerApiService,
@@ -27,6 +30,25 @@ export class CustomerBookingsListComponent implements OnInit {
     this.selectedBooking = booking;
     const modalRef = this.modalService.open(DealerDetailsModalComponent);
     modalRef.componentInstance.dealer = booking.dealer;
+  }
+
+  openFeedbackModal(booking: any) {
+    this.selectedBooking = booking;
+    this.feedbackText = booking.feedback || '';
+  }
+
+  submitFeedback() {
+    this.apiService.submitFeedback(this.selectedBooking?.id!, this.feedbackText).subscribe({
+      next: (value: HttpResponse<Response<string>>) => {
+        alert("Successfully submitted feedback")
+        this.ngOnInit()
+      },
+      error: err => Util.handleUnauthorized(err, this.router, Role.Customer),
+    })
+  }
+
+  closeFeedbackModal() {
+    this.feedbackText = '';
   }
 
   ngOnInit(): void {

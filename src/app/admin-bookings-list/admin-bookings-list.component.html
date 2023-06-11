@@ -14,6 +14,7 @@
       <th>Product Type</th>
       <th>Price</th>
       <th>Booking Status</th>
+      <th>Feedback</th>
     </tr>
     </thead>
     <tbody>
@@ -29,6 +30,7 @@
       <td>{{ booking.productType?.type }}</td>
       <td>Rs. {{ booking.price }}</td>
       <td [ngClass]="getBookingStatusClass(booking.bookingStatus)"><strong>{{ booking.bookingStatus }}</strong></td>
+      <td>{{booking.feedback}}</td>
     </tr>
     </tbody>
   </table>

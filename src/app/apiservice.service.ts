@@ -6,6 +6,8 @@ import {Customer} from "./customer";
 import {Dealer} from "./dealer";
 import {Booking} from "./booking";
 import {AppStrings} from "./app-strings";
+import {CustomerComplaint} from "./customer-complaint";
+import {DealerComplaints} from "./dealer-complaints";
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +17,16 @@ export class RESTAPIService {
   public static readonly baseApi = "http://localhost:8080"
 
   constructor(private http: HttpClient) {
+  }
+
+  getAllComplaints(): Observable<HttpResponse<CustomerComplaint[]>> {
+    let url = RESTAPIService.baseApi + "/admin/complaints"
+    return this.http.get<HttpResponse<CustomerComplaint[]>>(url, this.getRequestOptions(this.getAuthorizationHeader()))
+  }
+
+  getComplaintsCount(): Observable<HttpResponse<DealerComplaints[]>> {
+    let url = RESTAPIService.baseApi + "/admin/complaints/count"
+    return this.http.get<HttpResponse<DealerComplaints[]>>(url, this.getRequestOptions(this.getAuthorizationHeader()))
   }
 
   getAllBookings(): Observable<HttpResponse<Booking[]>> {

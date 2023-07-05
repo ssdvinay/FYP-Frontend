@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {CustomerApiService} from "../customer-api-service";
 import {Router} from "@angular/router";
 import {CustomerComplaint} from "../customer-complaint";
 import {Role, Util} from "../util";
 import {HttpResponse} from "@angular/common/http";
 import {DealerComplaints} from "../dealer-complaints";
+import {RESTAPIService} from "../apiservice.service";
 
 @Component({
   selector: 'app-complaints-page',
@@ -13,7 +13,7 @@ import {DealerComplaints} from "../dealer-complaints";
 })
 export class ComplaintsPageComponent implements OnInit {
 
-  constructor(private apiService: CustomerApiService, private router: Router) {
+  constructor(private apiService: RESTAPIService, private router: Router) {
 
   }
 
@@ -35,7 +35,7 @@ export class ComplaintsPageComponent implements OnInit {
 
   activeTab = 'all-complaints'; // Set the initial active tab
 
-  allComplaints : any
+  allComplaints: any
 
   dealerComplaints: any
 

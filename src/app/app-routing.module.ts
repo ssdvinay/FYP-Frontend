@@ -26,6 +26,7 @@ import {CustomerBookingsListComponent} from "./customer-bookings-list/customer-b
 import {DealerBookingsListComponent} from "./dealer-bookings-list/dealer-bookings-list.component";
 import {AdminBookingsListComponent} from "./admin-bookings-list/admin-bookings-list.component";
 import {DealerCustomersListComponent} from "./dealer-customers-list/dealer-customers-list.component";
+import {DealerComplainsComponent} from "./dealer-complains/dealer-complains.component";
 
 const routes: Routes = [
   {path: '', component: HomepageComponent},
@@ -49,14 +50,15 @@ const routes: Routes = [
   {path: 'dealer/homepage', component: DealerhomepageComponent},
   {path: 'dealer/myCustomers', component: DealerCustomersListComponent},
   {path: 'dealer/profile', component: EditDealerDetailsComponent},
+  {path: 'dealer/complaints', component: DealerComplainsComponent},
   {path: 'customer/profile', component: EditCustomerProfileComponent},
   {path: 'customer/complain', component: CustomerComplaintComponent},
   {path: 'customer/booking', component: CustomerBookingPageComponent},
   {path: 'customer/bookings', component: CustomerBookingsListComponent},
   {path: 'admin/complaints', component: ComplaintsPageComponent},
   {path: 'admin/bookings', component: AdminBookingsListComponent},
-  { path: 'admin/complaints/all-complaints', component: ComplaintsPageComponent },
-  { path: 'admin/complaints/dealer-complaints', component: ComplaintsPageComponent },
+  {path: 'admin/complaints/all-complaints', component: ComplaintsPageComponent},
+  {path: 'admin/complaints/dealer-complaints', component: ComplaintsPageComponent},
   {path: '**', component: NotfoundComponent}
 ];
 

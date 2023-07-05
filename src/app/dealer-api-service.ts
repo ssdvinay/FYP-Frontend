@@ -7,6 +7,7 @@ import {Injectable} from "@angular/core";
 import {UpdateDto} from "./update-dto";
 import {Booking} from "./booking";
 import {MyCustomerDto} from "./my-customer-dto";
+import {CustomerComplaint} from "./customer-complaint";
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +39,12 @@ export class DealerApiService {
       headers: new HttpHeaders(headers),
     }
   }
+
+  getAllComplaints(): Observable<HttpResponse<CustomerComplaint[]>> {
+    let url = DealerApiService.dealerBaseApi + "/complaints"
+    return this.http.get<HttpResponse<CustomerComplaint[]>>(url, this.getRequestOptions())
+  }
+
 
   getMyCustomers(): Observable<HttpResponse<MyCustomerDto[]>> {
     let url = DealerApiService.dealerBaseApi + "/myCustomers"

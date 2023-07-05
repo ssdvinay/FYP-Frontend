@@ -53,16 +53,6 @@ export class CustomerApiService {
     return this.http.get<HttpResponse<ProductType[]>>(url, this.getRequestOptions())
   }
 
-  getAllComplaints(): Observable<HttpResponse<CustomerComplaint[]>> {
-    let url = CustomerApiService.customerBaseApi + "/complaints"
-    return this.http.get<HttpResponse<CustomerComplaint[]>>(url, this.getRequestOptions())
-  }
-
-  getComplaintsCount(): Observable<HttpResponse<DealerComplaints[]>> {
-    let url = CustomerApiService.customerBaseApi + "/complaints/count"
-    return this.http.get<HttpResponse<DealerComplaints[]>>(url, this.getRequestOptions())
-  }
-
   getAllShowrooms(showroomFilters: ShowroomFilters): Observable<HttpResponse<Showroom[]>> {
     let url = CustomerApiService.customerBaseApi + "/showrooms"
     return this.http.put<HttpResponse<Showroom[]>>(url, showroomFilters, this.getRequestOptions())

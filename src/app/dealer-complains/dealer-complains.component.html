@@ -1,0 +1,20 @@
+<body>
+<app-dealerheader></app-dealerheader>
+<div class="container">
+  <h3>Customers Complaints</h3>
+  <table class="table table-bordered" style="overflow-y: auto">
+    <thead>
+    <tr>
+      <th>Customer Name</th>
+      <th>Complaint</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let complaint of allComplaints">
+      <td>{{ complaint.customerName }}</td>
+      <td>{{ complaint.complaint }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>

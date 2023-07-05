@@ -37,6 +37,7 @@ import { AdminBookingsListComponent } from './admin-bookings-list/admin-bookings
 import { DealerCustomersListComponent } from './dealer-customers-list/dealer-customers-list.component';
 import { DealerDetailsModalComponent } from './dealer-details-modal/dealer-details-modal.component';
 import { CustomerDetailsModalComponent } from './customer-details-modal/customer-details-modal.component';
+import { DealerComplainsComponent } from './dealer-complains/dealer-complains.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { CustomerDetailsModalComponent } from './customer-details-modal/customer
     DealerCustomersListComponent,
     DealerDetailsModalComponent,
     CustomerDetailsModalComponent,
+    DealerComplainsComponent,
   ],
   imports: [
     BrowserModule,

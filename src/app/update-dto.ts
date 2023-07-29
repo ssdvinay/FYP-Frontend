@@ -8,8 +8,10 @@ export class UpdateDto {
               public phoneNumber: String | null,
               public address: String | null,
               public showroomPicture: String | null,
+              public latitude: number,
+              public longitude: number,
               public supportedCarTypes: number[] = [],
               public supportedProductTypes: number[] = [],
-              public price: number = 0) {
+              public price: number = 0,) {
   }
 }

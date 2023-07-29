@@ -7,7 +7,7 @@
       <div class="col-md-4">
         <img class="card-img"
              src="{{'http://localhost:8080' + '/customer/image/' + showroom.dealer.id + '/' + showroom.dealer.showroomPicture}}"
-             alt="item image" style="height: 228px; width: 228px">
+             alt="item image" style="height: 228px; width: 228px; object-fit: cover">
       </div>
       <div class="col-md-8">
         <div class="card-body" style="margin-left: -120px">
@@ -15,6 +15,10 @@
           <p class="card-text">{{showroom.dealer.showRoomAddress}}</p>
           <p class="card-text">{{showroom.dealer.user.phoneNumber}}</p>
           <p class="card-text">{{showroom.dealer.user.email}}</p>
+          <div class="container2">
+            <p class="card-text">{{ getDistance() }} Kms</p>
+            <button class="btn btn-success" (click)="openGoogleMaps()">Maps</button>
+          </div>
         </div>
       </div>
     </div>

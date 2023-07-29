@@ -8,7 +8,9 @@ export class Dealer {
               public approvalStatus: String,
               public user: User,
               public dealerCarProductList: DealerCarProduct[],
-              public showroomPicture: String | null = null) {
+              public showroomPicture: String | null = null,
+              public latitude: number,
+              public longitude: number) {
   }
 
   get showroomPictureUrl(): String {

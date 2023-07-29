@@ -6,3 +6,12 @@ body {
   padding-left: 24px;
   overflow: auto;
 }
+
+.container2 {
+  display: flex; /* Use flexbox */
+  align-items: center; /* Center elements vertically within the container (optional) */
+}
+
+.card-text {
+  margin-right: 16px;
+}

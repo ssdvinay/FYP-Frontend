@@ -66,7 +66,15 @@ export class EditDealerDetailsComponent implements OnInit {
     let address = (document.getElementById('address') as HTMLInputElement).value
     let password = (document.getElementById('password') as HTMLInputElement).value
     let retypePassword = (document.getElementById('retypePassword') as HTMLInputElement).value
-    let user = new UpdateDto(this.user.id, firstName, lastName, username, email, password, phoneNumber, address, "");
+    let latitude = (document.getElementById('latitude') as HTMLInputElement).valueAsNumber
+    let longitude = (document.getElementById('longitude') as HTMLInputElement).valueAsNumber
+
+    if (!Util.isInPakistan(latitude, longitude)) {
+      alert('Coordinates must be in Pakistan')
+      return;
+    }
+
+    let user = new UpdateDto(this.user.id, firstName, lastName, username, email, password, phoneNumber, address, "", latitude, longitude);
     if (password !== retypePassword) {
       alert('Password do not match')
       return

@@ -3,7 +3,7 @@
     <div class="row justify-content-center align-items-center h-100" style="margin-top: -2%">
       <div class="col-12 col-lg-9 col-xl-7">
         <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
-          <div class="card-body p-4 p-md-5" style="height: 92vh">
+          <div class="card-body p-4 p-md-5" style="height: 100vh">
             <div style="margin-top: -5%">
               <a routerLink="">
                 <img src="/assets/Logo.png" style="float: left; margin-left: 15%" width="72" height="44" alt="image">
@@ -62,6 +62,25 @@
                   <div class="form-outline">
                     <input type="text" id="address" class="form-control form-control-lg"
                            placeholder="Show Room Address" [value]="user.address"/>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <input type="number" id="latitude" class="form-control" pattern="[0-9]+" [value]="user.latitude"
+                           onkeydown="if(event.keyCode === 189 || event.keyCode === 109 || event.keyCode === 187) return false;" placeholder="Latitude"/>
+                  </div>
+
+                </div>
+
+                <div class="col-md-6 mb-4 pb-2">
+                  <div class="form-outline">
+                    <input type="number" id="longitude" class="form-control" pattern="[0-9]+" [value]="user.longitude"
+                           onkeydown="if(event.keyCode === 189 || event.keyCode === 109 || event.keyCode === 187) return false;"
+                           placeholder="Longitude"/>
                   </div>
                 </div>
               </div>

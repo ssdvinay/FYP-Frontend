@@ -27,11 +27,24 @@ export class CustomerBookingPageComponent implements OnInit {
   selectedCarType: CarType | undefined;
   selectedProductType: ProductType | undefined;
   selectedDate: Date | undefined;
+  currentLocation = {
+    latitude: 0,
+    longitude: 0
+  }
+
+  currentLocationUpdate(latitude: number, longitude: number) {
+    this.currentLocation.latitude = latitude
+    this.currentLocation.longitude = longitude
+  }
 
   constructor(private shoowroomSharedService: ShowroomSharedService,
               private router: Router,
               private apiService: CustomerApiService) {
     this.showroom = shoowroomSharedService.showRoom
+    Util.getCurrentLocation((lat: number, long: number) => {
+      this.currentLocation.latitude = lat
+      this.currentLocation.longitude = long
+    })
   }
 
   ngOnInit(): void {
@@ -50,6 +63,19 @@ export class CustomerBookingPageComponent implements OnInit {
       },
       error: err => Util.handleUnauthorized(err, this.router, Role.Customer),
     })
+  }
+
+  openGoogleMaps() {
+    Util.openGoogleMaps(this.showroom.dealer.latitude, this.showroom.dealer.longitude)
+  }
+
+  getDistance(): number {
+    return +Util.getDistanceFromLatLonInKm(
+      this.currentLocation.latitude,
+      this.currentLocation.longitude,
+      this.showroom.dealer.latitude,
+      this.showroom.dealer.longitude
+    ).toFixed(2)
   }
 
   createBooking() {

@@ -5,7 +5,6 @@ import {Role, Util} from "../util";
 import {ShowroomFilters} from "../showroom-filters";
 import {Showroom} from "../showroom";
 import {CustomerApiService} from "../customer-api-service";
-import {Dealer} from "../dealer";
 import {ShowroomSharedService} from "../showroom-shared-service";
 
 @Component({
@@ -15,8 +14,23 @@ import {ShowroomSharedService} from "../showroom-shared-service";
 })
 export class AllshowroomsComponent implements OnInit {
   dealers: any
+  latitude: number = 0
+  longitude: number = 0
 
   constructor(private apiService: CustomerApiService, private router: Router, private showroomSharedService: ShowroomSharedService) {
+    Util.getCurrentLocation((lat: number, long: number) => {
+      this.latitude = lat
+      this.longitude = long
+    })
+  }
+
+  getDistance(showRoom: Showroom): number {
+    return +Util.getDistanceFromLatLonInKm(
+      this.latitude,
+      this.longitude,
+      showRoom.dealer.latitude,
+      showRoom.dealer.longitude
+    ).toFixed(2)
   }
 
   getAllDealers() {
@@ -47,13 +61,22 @@ export class AllshowroomsComponent implements OnInit {
       spt.push(2)
 
     let showroomFilters = new ShowroomFilters(minPrice, maxPrice, sct, spt);
+
+    let maxDistance = (document.getElementById('distance') as HTMLInputElement).valueAsNumber
+    if (isNaN(maxDistance)) maxDistance = 100
+
     this.apiService.getAllShowrooms(showroomFilters).subscribe({
         next: (value: HttpResponse<Showroom[]>) => {
           this.dealers = value
+          this.dealers = this.dealers.filter((sr: Showroom) => this.getDistance(sr) <= maxDistance)
         },
         error: err => Util.handleUnauthorized(err, this.router, Role.Customer),
       }
     )
+  }
+
+  openGoogleMaps(showRoom: Showroom) {
+    Util.openGoogleMaps(showRoom.dealer.latitude, showRoom.dealer.longitude)
   }
 
   ngOnInit(): void {

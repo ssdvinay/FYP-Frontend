@@ -4,6 +4,8 @@ import {RESTAPIService} from "../../apiservice.service";
 import {User} from "../../user";
 import {HttpErrorResponse} from "@angular/common/http";
 import {Router} from "@angular/router";
+import {Util} from "../../util";
+
 
 @Component({
   selector: 'app-dealer',
@@ -36,7 +38,6 @@ export class DealerComponent {
     reader.readAsDataURL(file);
   }
 
-
   signup(event: Event) {
     event.preventDefault()
     let user: User | null = UserHelper.createUser(document, 'DEALER')
@@ -66,6 +67,14 @@ export class DealerComponent {
     }
     if (!this.selectedFile.type.startsWith('image/')) {
       alert('Selected file is not an image')
+      return;
+    }
+
+    user.latitude = (document.getElementById('latitude') as HTMLInputElement).valueAsNumber
+    user.longitude = (document.getElementById('longitude') as HTMLInputElement).valueAsNumber
+
+    if (!Util.isInPakistan(user.latitude, user.longitude)) {
+      alert('Coordinates must be in Pakistan')
       return;
     }
 

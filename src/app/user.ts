@@ -10,6 +10,8 @@ export class User {
               public blacklisted: boolean = false,
               public supportedCarTypes: number[] = [],
               public supportedProductTypes: number[] = [],
-              public price: number = 0) {
+              public price: number = 0,
+              public latitude: number = 0,
+              public longitude: number = 0) {
   }
 }

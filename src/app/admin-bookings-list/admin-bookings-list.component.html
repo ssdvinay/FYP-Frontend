@@ -30,10 +30,46 @@
       <td>{{ booking.productType?.type }}</td>
       <td>Rs. {{ booking.price }}</td>
       <td [ngClass]="getBookingStatusClass(booking.bookingStatus)"><strong>{{ booking.bookingStatus }}</strong></td>
-      <td>{{booking.feedback}}</td>
+      <td>
+        <ng-container *ngIf="booking.bookingStatus == 'CONFIRMED'">
+          <ng-container *ngIf="booking.feedback != null; else feedbackButton">
+            <button class="btn btn-primary" data-toggle="modal" data-target="#feedbackModal"
+                    (click)="openFeedbackModal(booking)">Show
+            </button>
+          </ng-container>
+          <ng-template #feedbackButton>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#feedbackModal"
+                    (click)="openFeedbackModal(booking)">Submit
+            </button>
+          </ng-template>
+        </ng-container>
+      </td>
     </tr>
     </tbody>
   </table>
 </div>
 <app-footer></app-footer>
 </body>
+<div class="modal fade" id="feedbackModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Feedback Modal</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <textarea class="form-control" rows="5" [(ngModel)]="feedbackText" disabled placeholder="Your feedback..."></textarea>
+        <div class="rating-stars" disabled>
+          <span [class.active]="rating >= 1">&#9733;</span>
+          <span  [class.active]="rating >= 2">&#9733;</span>
+          <span  [class.active]="rating >= 3">&#9733;</span>
+          <span  [class.active]="rating >= 4">&#9733;</span>
+          <span  [class.active]="rating >= 5">&#9733;</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

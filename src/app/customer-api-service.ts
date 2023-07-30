@@ -33,11 +33,12 @@ export class CustomerApiService {
     return this.http.get<HttpResponse<WorkHour[]>>(url, this.getRequestOptions())
   }
 
-  submitFeedback(bookingId: number, feedback: string): Observable<HttpResponse<Response<string>>> {
+  submitFeedback(bookingId: number, feedback: string, rating: number): Observable<HttpResponse<Response<string>>> {
     let url = CustomerApiService.customerBaseApi + "/booking/feedback"
     let body = {
       bookingId: bookingId,
-      feedback: feedback
+      feedback: feedback,
+      rating: rating
     }
     return this.http.put<HttpResponse<Response<string>>>(url, body, this.getRequestOptions())
   }

@@ -19,10 +19,19 @@ export class AdminBookingsListComponent implements OnInit {
 
   selectedBooking: Booking | null = null;
 
+  rating: number = 0;
+
+  feedbackText: string = '';
+
   constructor(
     private router: Router,
     private apiService: RESTAPIService,
     private modalService: NgbModal) {
+  }
+
+  openFeedbackModal(booking: any) {
+    this.feedbackText = booking.feedback || '';
+    this.rating = booking.rating
   }
 
   openDealerDetailsModal(booking: Booking) {

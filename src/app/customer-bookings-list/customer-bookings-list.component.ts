@@ -20,10 +20,16 @@ export class CustomerBookingsListComponent implements OnInit {
 
   feedbackText: string = '';
 
+  rating: number = 0;
+
   constructor(
     private router: Router,
     private apiService: CustomerApiService,
     private modalService: NgbModal) {
+  }
+
+  setRating(ratingValue: number) {
+    this.rating = ratingValue;
   }
 
   openDealerDetailsModal(booking: Booking) {
@@ -35,10 +41,21 @@ export class CustomerBookingsListComponent implements OnInit {
   openFeedbackModal(booking: any) {
     this.selectedBooking = booking;
     this.feedbackText = booking.feedback || '';
+    this.rating = booking.rating
   }
 
   submitFeedback() {
-    this.apiService.submitFeedback(this.selectedBooking?.id!, this.feedbackText).subscribe({
+    if (this.feedbackText.length == 0) {
+      alert("Please write feedback")
+      return
+    }
+
+    if (this.rating == 0) {
+      alert("Please select rating")
+      return;
+    }
+
+    this.apiService.submitFeedback(this.selectedBooking?.id!, this.feedbackText,this.rating).subscribe({
       next: (value: HttpResponse<Response<string>>) => {
         alert("Successfully submitted feedback")
         this.ngOnInit()

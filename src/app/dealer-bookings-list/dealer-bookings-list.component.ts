@@ -19,6 +19,10 @@ export class DealerBookingsListComponent implements OnInit {
 
   selectedBooking: Booking | null = null;
 
+  rating: number = 0;
+
+  feedbackText: string = '';
+
   constructor(
     private router: Router,
     private apiService: DealerApiService,
@@ -29,6 +33,11 @@ export class DealerBookingsListComponent implements OnInit {
     this.selectedBooking = booking;
     const modalRef = this.modalService.open(CustomerDetailsModalComponent);
     modalRef.componentInstance.customer = booking.customer;
+  }
+
+  openFeedbackModal(booking: any) {
+    this.feedbackText = booking.feedback || '';
+    this.rating = booking.rating
   }
 
   ngOnInit(): void {

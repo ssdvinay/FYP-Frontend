@@ -49,13 +49,24 @@
     <div class="col-md-6">
       <div class="form-group">
         <label for="bookingDate">Booking Date</label>
-        <input type="date" class="form-control" id="bookingDate" [(ngModel)]="selectedDate" required>
+        <input type="date" class="form-control" id="bookingDate" [(ngModel)]="selectedDate" (change)="onBookingDateChange()" required>
       </div>
     </div>
     <div class="col-md-6">
       <div class="form-group">
         <label for="price">Price</label>
         <input type="text" class="form-control" id="price" value="Rs. {{showroom.price}}" disabled>
+      </div>
+    </div>
+  </div>
+  <!-- Available Slots -->
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="availableSlots">Available Slots</label>
+        <select class="form-control" id="availableSlots" [(ngModel)]="selectedSlot">
+          <option *ngFor="let slot of availableSlots[getSelectedDay()]" [ngValue]="slot">{{ slot }}</option>
+        </select>
       </div>
     </div>
   </div>

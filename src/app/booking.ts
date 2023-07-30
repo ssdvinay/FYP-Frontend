@@ -11,6 +11,7 @@ export class Booking {
               public price: Number,
               public bookingStatus: String,
               public bookingDate: String,
+              public bookingTime: String,
               public createdAt: String,
               public dealerAssociationId: DealerAssociationId,
               public dealer: Dealer | null = null,

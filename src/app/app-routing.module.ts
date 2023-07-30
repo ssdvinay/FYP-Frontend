@@ -27,6 +27,7 @@ import {DealerBookingsListComponent} from "./dealer-bookings-list/dealer-booking
 import {AdminBookingsListComponent} from "./admin-bookings-list/admin-bookings-list.component";
 import {DealerCustomersListComponent} from "./dealer-customers-list/dealer-customers-list.component";
 import {DealerComplainsComponent} from "./dealer-complains/dealer-complains.component";
+import {DealerWorkingHoursComponent} from "./dealer-working-hours/dealer-working-hours.component";
 
 const routes: Routes = [
   {path: '', component: HomepageComponent},
@@ -51,6 +52,7 @@ const routes: Routes = [
   {path: 'dealer/myCustomers', component: DealerCustomersListComponent},
   {path: 'dealer/profile', component: EditDealerDetailsComponent},
   {path: 'dealer/complaints', component: DealerComplainsComponent},
+  {path: 'dealer/hours', component: DealerWorkingHoursComponent},
   {path: 'customer/profile', component: EditCustomerProfileComponent},
   {path: 'customer/complain', component: CustomerComplaintComponent},
   {path: 'customer/booking', component: CustomerBookingPageComponent},

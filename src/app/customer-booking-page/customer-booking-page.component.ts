@@ -10,6 +10,7 @@ import {ProductType} from "../product-type";
 import {Booking} from "../booking";
 import {DealerAssociationId} from "../dealer-association-id";
 import {Response} from "../response";
+import {WorkHour} from "../work-hour";
 
 @Component({
   selector: 'app-customer-booking-page',
@@ -27,6 +28,9 @@ export class CustomerBookingPageComponent implements OnInit {
   selectedCarType: CarType | undefined;
   selectedProductType: ProductType | undefined;
   selectedDate: Date | undefined;
+  selectedSlot: string | undefined;
+  availableSlots: { [key: string]: string[] } = {}
+  workHours: any
   currentLocation = {
     latitude: 0,
     longitude: 0
@@ -45,6 +49,7 @@ export class CustomerBookingPageComponent implements OnInit {
       this.currentLocation.latitude = lat
       this.currentLocation.longitude = long
     })
+    this.availableSlots[""] = []
   }
 
   ngOnInit(): void {
@@ -63,6 +68,37 @@ export class CustomerBookingPageComponent implements OnInit {
       },
       error: err => Util.handleUnauthorized(err, this.router, Role.Customer),
     })
+
+    this.apiService.getDealerWorkHours(this.showroom.dealer.id).subscribe({
+      next: (value: HttpResponse<WorkHour[]>) => {
+        this.workHours = value
+        this.updateAvailableSlots()
+      },
+      error: err => Util.handleUnauthorized(err, this.router, Role.Customer),
+    })
+  }
+
+  updateAvailableSlots(day: string = "", bookedHours: string[] = []) {
+    this.workHours.forEach((wh: WorkHour) => {
+      this.availableSlots[wh.day] = this.split(wh.workFrom, wh.workTo, day == wh.day ? bookedHours : [])
+    })
+  }
+
+  split(workFrom: string, workTo: string, bookedHours: string[]): string[] {
+    let result: string[] = []
+    let startTime: number = +workFrom.split(":")[0]
+    let endTime: number = +workTo.split(":")[0]
+    for (let hour = startTime; hour <= endTime; hour++) {
+      const slot = `${hour}:00`;
+      if (!bookedHours.includes(slot))
+        result.push(slot)
+    }
+    return result
+  }
+
+  formatHour(hour: number): string {
+    if (hour <= 9) return `0${hour}`
+    return `${hour}`
   }
 
   openGoogleMaps() {
@@ -76,6 +112,21 @@ export class CustomerBookingPageComponent implements OnInit {
       this.showroom.dealer.latitude,
       this.showroom.dealer.longitude
     ).toFixed(2)
+  }
+
+  onBookingDateChange() {
+    this.selectedSlot = undefined
+    this.apiService.getDealerBookingSlots(this.showroom.dealer.id, this.selectedDate?.toString()!!).subscribe({
+      next: (value: any) => {
+        let day: string = Util.getDayAsString(this.selectedDate!!)
+        this.updateAvailableSlots(day, value)
+      },
+      error: err => Util.handleUnauthorized(err, this.router, Role.Customer),
+    })
+  }
+
+  getSelectedDay(): string {
+    return !this.selectedDate ? "" : Util.getDayAsString(this.selectedDate)
   }
 
   createBooking() {
@@ -93,11 +144,17 @@ export class CustomerBookingPageComponent implements OnInit {
       return;
     }
 
+    if (!this.selectedSlot) {
+      alert("Please select a time slot")
+      return;
+    }
+
     let booking = new Booking(0,
       0,
       this.showroom.price,
       "PENDING",
       this.selectedDate.toString(),
+      this.selectedSlot,
       currentDate.toDateString(),
       new DealerAssociationId(
         this.showroom.dealer.id,

@@ -38,6 +38,7 @@ import { DealerCustomersListComponent } from './dealer-customers-list/dealer-cus
 import { DealerDetailsModalComponent } from './dealer-details-modal/dealer-details-modal.component';
 import { CustomerDetailsModalComponent } from './customer-details-modal/customer-details-modal.component';
 import { DealerComplainsComponent } from './dealer-complains/dealer-complains.component';
+import { DealerWorkingHoursComponent } from './dealer-working-hours/dealer-working-hours.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { DealerComplainsComponent } from './dealer-complains/dealer-complains.co
     DealerDetailsModalComponent,
     CustomerDetailsModalComponent,
     DealerComplainsComponent,
+    DealerWorkingHoursComponent,
   ],
   imports: [
     BrowserModule,

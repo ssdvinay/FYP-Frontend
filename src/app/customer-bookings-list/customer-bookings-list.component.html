@@ -5,14 +5,15 @@
   <table class="table table-bordered" style="overflow-y: auto">
     <thead>
     <tr>
-      <th>Booking ID</th>
-      <th>Dealer Name</th>
+      <th>ID</th>
+      <th>Dealer</th>
       <th>Dealer Address</th>
-      <th>Booking Date</th>
+      <th>Date</th>
+      <th>Time</th>
       <th>Car Type</th>
       <th>Product Type</th>
       <th>Price</th>
-      <th>Booking Status</th>
+      <th>Status</th>
       <th>Feedback</th>
     </tr>
     </thead>
@@ -23,6 +24,7 @@
           (click)="openDealerDetailsModal(booking)">{{ booking.dealer.user.firstName + " " + booking.dealer.user.lastName }}</td>
       <td>{{ booking.dealer.showRoomAddress }}</td>
       <td>{{ booking.bookingDate }}</td>
+      <td>{{ booking.bookingTime }}</td>
       <td>{{ booking.carType?.type }}</td>
       <td>{{ booking.productType?.type }}</td>
       <td>{{ booking.price }}</td>

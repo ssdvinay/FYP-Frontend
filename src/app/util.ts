@@ -36,6 +36,13 @@ export class Util {
       && (longitude >= PAKISTAN_LNG_MIN && longitude <= PAKISTAN_LNG_MAX);
   }
 
+  static getDayAsString(date: Date) {
+    const d = new Date(date)
+    return d.toLocaleDateString("en-PK", {
+      weekday: "long"
+    })
+  }
+
   static getCurrentLocation(callback: CurrentLocationCallback) {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(

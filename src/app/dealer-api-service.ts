@@ -8,6 +8,7 @@ import {UpdateDto} from "./update-dto";
 import {Booking} from "./booking";
 import {MyCustomerDto} from "./my-customer-dto";
 import {CustomerComplaint} from "./customer-complaint";
+import {WorkHour} from "./work-hour";
 
 @Injectable({
   providedIn: 'root'
@@ -64,6 +65,11 @@ export class DealerApiService {
   getDealerDetails(): Observable<HttpResponse<Response<UpdateDto>>> {
     let url = DealerApiService.dealerBaseApi + "/" + localStorage.getItem(AppStrings.dealerEmailOrUserName)
     return this.http.get<any>(url, this.getRequestOptions())
+  }
+
+  saveWorkHours(workHours: WorkHour[]): Observable<HttpResponse<Response<String>>> {
+    let url = DealerApiService.dealerBaseApi + "/hours"
+    return this.http.post<any>(url, workHours, this.getRequestOptions())
   }
 
   update(formData: FormData): Observable<any> {

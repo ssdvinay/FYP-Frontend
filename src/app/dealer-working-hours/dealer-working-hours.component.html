@@ -1,0 +1,33 @@
+<body>
+<app-dealerheader></app-dealerheader>
+<div class="container mt-3">
+  <h2>Working Hours for the Week</h2>
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>Days</th>
+      <th>From</th>
+      <th>To</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let day of days">
+      <td>{{ day }}</td>
+      <td>
+        <select class="form-control" [(ngModel)]="workingHours[day]['from']" (change)="onFromTimeSelected(day)">
+          <option *ngFor="let time of times" [value]="time">{{ time }}</option>
+        </select>
+      </td>
+      <td>
+        <select class="form-control" [(ngModel)]="workingHours[day]['to']" [disabled]="!workingHours[day]['from']">
+          <option *ngFor="let time of getValidToTimes(day)" [value]="time">{{ time }}</option>
+        </select>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="text-center">
+    <button class="btn btn-block btn-primary mt-3" style="width: 300px" (click)="onSaveTimeSlots()">Save</button>
+  </div>
+</div>
+</body>

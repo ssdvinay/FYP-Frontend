@@ -8,11 +8,10 @@ import {AppStrings} from "./app-strings";
 import {Response} from "./response";
 import {CustomerUpdateDto} from "./customer-update-dto";
 import {Dealer} from "./dealer";
-import {CustomerComplaint} from "./customer-complaint";
-import {DealerComplaints} from "./dealer-complaints";
 import {CarType} from "./car-type";
 import {ProductType} from "./product-type";
 import {Booking} from "./booking";
+import {WorkHour} from "./work-hour";
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +21,16 @@ export class CustomerApiService {
   private static readonly customerBaseApi = RESTAPIService.baseApi + '/customer';
 
   constructor(private http: HttpClient) {
+  }
+
+  getDealerBookingSlots(dealerId: number, date: String): Observable<HttpResponse<string[]>> {
+    let url = CustomerApiService.customerBaseApi + "/" + dealerId + "/bookings?date=" + date
+    return this.http.get<HttpResponse<string[]>>(url, this.getRequestOptions())
+  }
+
+  getDealerWorkHours(dealerId: number): Observable<HttpResponse<WorkHour[]>> {
+    let url = CustomerApiService.customerBaseApi + "/dealers/" + dealerId + "/hours"
+    return this.http.get<HttpResponse<WorkHour[]>>(url, this.getRequestOptions())
   }
 
   submitFeedback(bookingId: number, feedback: string): Observable<HttpResponse<Response<string>>> {

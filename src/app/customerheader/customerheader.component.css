@@ -1,12 +1,15 @@
 header {
-  width: 100%;
+  width: 104%;
   position: relative;
   z-index: 100;
   padding: 16px;
+  background: #ffffff;
+  margin-left: -24px;
 }
 .nav-item {
-  padding: 4px;
+  padding: 10px;
   font-weight: bolder;
+
 }
 
 .navbar-brand {

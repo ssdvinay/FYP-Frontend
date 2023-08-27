@@ -68,6 +68,7 @@
               <h5 class="card-title">{{ item.dealer.user.firstName + " " + item.dealer.user.lastName}}</h5>
               <p class="card-text">{{ item.dealer.showRoomAddress }}</p>
               <p class="card-text">Rs. {{ item.price }}</p>
+              <p class="card-text">Rating: {{ item.rating }}</p>
               <p class="card-text">{{ getDistance(item) }} Kms</p>
               <button type="button" class="btn btn-primary" (click)="createBooking(item)">Booking</button>
               <button style="margin-left: 16px" class="btn btn-success" (click)="openGoogleMaps(item)">Maps</button>

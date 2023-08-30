@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, Renderer2} from '@angular/core';
 import {ShowroomSharedService} from "../showroom-shared-service";
 import {Router} from "@angular/router";
 import {CustomerApiService} from "../customer-api-service";
@@ -11,6 +11,7 @@ import {Booking} from "../booking";
 import {DealerAssociationId} from "../dealer-association-id";
 import {Response} from "../response";
 import {WorkHour} from "../work-hour";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-customer-booking-page',
@@ -43,13 +44,25 @@ export class CustomerBookingPageComponent implements OnInit {
 
   constructor(private shoowroomSharedService: ShowroomSharedService,
               private router: Router,
-              private apiService: CustomerApiService) {
+              private location: Location,
+              private apiService: CustomerApiService,
+              private el: ElementRef,
+              private renderer: Renderer2) {
     this.showroom = shoowroomSharedService.showRoom
+    if (this.showroom == null)
+      this.location.back()
     Util.getCurrentLocation((lat: number, long: number) => {
       this.currentLocation.latitude = lat
       this.currentLocation.longitude = long
     })
     this.availableSlots[""] = []
+  }
+
+  scrollToBottom(): void {
+    const element = this.el.nativeElement.querySelector('app-review-list');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
   }
 
   ngOnInit(): void {

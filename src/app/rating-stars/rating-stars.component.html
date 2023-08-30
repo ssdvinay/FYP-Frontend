@@ -1,0 +1,7 @@
+<div class="stars" disabled [ngbTooltip]="'Rating: ' + rating" style="margin-top: -16px">
+  <span [ngClass]="{on: rating >= 1}" class="star"></span>
+  <span [ngClass]="{on: rating >= 2, half: rating > 1 && rating < 2}" class="star"></span>
+  <span [ngClass]="{on: rating >= 3, half: rating > 2 && rating < 3}" class="star"></span>
+  <span [ngClass]="{on: rating >= 4, half: rating > 3 && rating < 4}" class="star"></span>
+  <span [ngClass]="{on: rating >= 5, half: rating > 4 && rating < 5}" class="star"></span>
+</div>

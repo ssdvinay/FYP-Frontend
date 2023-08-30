@@ -1,13 +1,9 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <title> Showrooms </title>
 <body>
 <app-customerheader></app-customerheader>
 <div class="container my-4">
   <div class="row">
-    <div class="col-md-4" >
+    <div class="col-md-4">
       <div class="card">
         <div class="card-header">
           Filters
@@ -15,15 +11,21 @@
         <div class="card-body">
           <div class="form-group">
             <label for="min-price">Min Price:</label>
-            <input type="number" class="form-control" id="min-price" placeholder="Enter Min Price" [defaultValue]="0" min="0" step="1" pattern="[0-9]+" onkeydown="if(event.keyCode === 189 || event.keyCode === 109 || event.keyCode === 187) return false;">
+            <input type="number" class="form-control" id="min-price" placeholder="Enter Min Price" [defaultValue]="0"
+                   min="0" step="1" pattern="[0-9]+"
+                   onkeydown="if(event.keyCode === 189 || event.keyCode === 109 || event.keyCode === 187) return false;">
           </div>
           <div class="form-group">
             <label for="max-price">Max Price:</label>
-            <input type="number" class="form-control" id="max-price" placeholder="Enter Max Price" [defaultValue]="10000" min="0" step="1" pattern="[0-9]+" onkeydown="if(event.keyCode === 189 || event.keyCode === 109 || event.keyCode === 187) return false;">
+            <input type="number" class="form-control" id="max-price" placeholder="Enter Max Price"
+                   [defaultValue]="10000" min="0" step="1" pattern="[0-9]+"
+                   onkeydown="if(event.keyCode === 189 || event.keyCode === 109 || event.keyCode === 187) return false;">
           </div>
           <div class="form-group">
             <label for="max-price">Nearby distance in Kilometers</label>
-            <input type="number" class="form-control" id="distance" placeholder="Enter Distance in Kms" [defaultValue]="100" min="0" step="1" pattern="[0-9]+" onkeydown="if(event.keyCode === 189 || event.keyCode === 109 || event.keyCode === 187) return false;">
+            <input type="number" class="form-control" id="distance" placeholder="Enter Distance in Kms"
+                   [defaultValue]="100" min="0" step="1" pattern="[0-9]+"
+                   onkeydown="if(event.keyCode === 189 || event.keyCode === 109 || event.keyCode === 187) return false;">
           </div>
           <hr>
           <h5>Select Car Types</h5>
@@ -55,20 +57,24 @@
           </div>
         </div>
         <div class="card-footer">
-          <button class="btn btn-primary btn-block" style="margin-bottom: 8px; margin-top: 8px; cursor: pointer" (click)="getAllDealers()">Apply Filters</button>
+          <button class="btn btn-primary btn-block" style="margin-bottom: 8px; margin-top: 8px; cursor: pointer"
+                  (click)="getAllDealers()">Apply Filters
+          </button>
         </div>
       </div>
     </div>
-    <div class="col-md-8" >
+    <div class="col-md-8">
       <div class="row">
         <div class="col-sm-6 col-md-4" *ngFor="let item of dealers">
           <div class="card mb-4">
-            <img class="card-img-top" src="{{'http://localhost:8080' + '/customer/image/' + item.dealer.id + '/' + item.dealer.showroomPicture}}" alt="item image" style="height: 180px; object-fit: cover">
+            <img class="card-img-top"
+                 src="{{'http://localhost:8080' + '/customer/image/' + item.dealer.id + '/' + item.dealer.showroomPicture}}"
+                 alt="item image" style="height: 180px; object-fit: cover">
             <div class="card-body">
               <h5 class="card-title">{{ item.dealer.user.firstName + " " + item.dealer.user.lastName}}</h5>
               <p class="card-text">{{ item.dealer.showRoomAddress }}</p>
-              <p class="card-text">Rs. {{ item.price }}</p>
-              <p class="card-text">Rating: {{ item.rating }}</p>
+              <p class="card-text" style="margin-top: -4px">Rs. {{ item.price }}</p>
+              <app-rating-stars [rating]="item.rating"></app-rating-stars>
               <p class="card-text">{{ getDistance(item) }} Kms</p>
               <button type="button" class="btn btn-primary" (click)="createBooking(item)">Booking</button>
               <button style="margin-left: 16px" class="btn btn-success" (click)="openGoogleMaps(item)">Maps</button>

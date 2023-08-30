@@ -18,6 +18,7 @@ export class Booking {
               public customer: Customer | null = null,
               public carType: CarType | null = null,
               public productType: ProductType | null = null,
-              public feedback: String | null = null) {
+              public feedback: String | null = null,
+              public rating: Number | null = null) {
   }
 }

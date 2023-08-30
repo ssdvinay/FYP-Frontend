@@ -23,6 +23,11 @@ export class CustomerApiService {
   constructor(private http: HttpClient) {
   }
 
+  getDealerBookings(id: number): Observable<HttpResponse<Booking[]>> {
+    let url = CustomerApiService.customerBaseApi + "/dealer/" + id + "/bookings"
+    return this.http.get<HttpResponse<Booking[]>>(url, this.getRequestOptions())
+  }
+
   getDealerBookingSlots(dealerId: number, date: String): Observable<HttpResponse<string[]>> {
     let url = CustomerApiService.customerBaseApi + "/" + dealerId + "/bookings?date=" + date
     return this.http.get<HttpResponse<string[]>>(url, this.getRequestOptions())

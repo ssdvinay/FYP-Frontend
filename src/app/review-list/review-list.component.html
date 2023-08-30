@@ -1,0 +1,16 @@
+<div class="review-list">
+  <div *ngFor="let booking of bookings" class="review-item">
+    <div class="customer-info">
+      <h5>{{ booking.customer.user.firstName + " " + booking.customer.user.lastName + "   "}}</h5>
+      <div class="rating-stars" disabled>
+        <span [class.active]="booking.rating >= 1">&#9733;</span>
+        <span [class.active]="booking.rating >= 2">&#9733;</span>
+        <span [class.active]="booking.rating >= 3">&#9733;</span>
+        <span [class.active]="booking.rating >= 4">&#9733;</span>
+        <span [class.active]="booking.rating >= 5">&#9733;</span>
+      </div>
+    </div>
+    <p class="product" style="color: grey; margin-bottom: 0">{{ booking.carType.type + " | " + booking.productType.type }}</p>
+    <p>{{ booking.feedback }}</p>
+  </div>
+</div>

@@ -11,7 +11,10 @@
       </div>
       <div class="col-md-8">
         <div class="card-body" style="margin-left: -120px">
-          <h5 class="card-title">{{showroom.dealer.user.firstName + " " + showroom.dealer.user.lastName}} ({{showroom.rating}})</h5>
+          <div style="display: flex; align-items: center">
+            <h5 class="card-title">{{showroom.dealer.user.firstName + " " + showroom.dealer.user.lastName}}</h5>
+            <app-rating-stars [rating]="showroom.rating" (click)="scrollToBottom()" style="cursor: pointer"></app-rating-stars>
+          </div>
           <p class="card-text">{{showroom.dealer.showRoomAddress}}</p>
           <p class="card-text">{{showroom.dealer.user.phoneNumber}}</p>
           <p class="card-text">{{showroom.dealer.user.email}}</p>
@@ -49,7 +52,8 @@
     <div class="col-md-6">
       <div class="form-group">
         <label for="bookingDate">Booking Date</label>
-        <input type="date" class="form-control" id="bookingDate" [(ngModel)]="selectedDate" (change)="onBookingDateChange()" required>
+        <input type="date" class="form-control" id="bookingDate" [(ngModel)]="selectedDate"
+               (change)="onBookingDateChange()" required>
       </div>
     </div>
     <div class="col-md-6">
@@ -76,4 +80,6 @@
     <button class="btn btn-primary" style="margin-top: 32px" (click)="createBooking()">Confirm Booking</button>
   </div>
 </div>
+<h2>Customers Reviews</h2>
+<app-review-list [dealerId]="showroom.dealer.id"></app-review-list>
 </body>
